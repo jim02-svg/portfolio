@@ -67,22 +67,6 @@ export function ContactSection({ isDark }: Props) {
     >
       {/* Background layers */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
-        {/* Faint grid — softer, fades toward edges */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: isDark
-              ? "linear-gradient(rgba(177,18,38,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(177,18,38,0.05) 1px, transparent 1px)"
-              : "linear-gradient(rgba(122,15,24,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(122,15,24,0.04) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-            maskImage:
-              "radial-gradient(ellipse 65% 55% at 50% 50%, black 0%, rgba(0,0,0,0.45) 55%, transparent 92%)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 65% 55% at 50% 50%, black 0%, rgba(0,0,0,0.45) 55%, transparent 92%)",
-            opacity: isDark ? 0.9 : 0.7,
-          }}
-        />
-
         {/* Layer 1: Large distributed radial glows — BEHIND the grid */}
         <div
           className="absolute -inset-[10%]"
@@ -102,16 +86,37 @@ export function ContactSection({ isDark }: Props) {
           }}
         />
 
-        {/* Layer 2: Soft atmospheric red haze across the middle */}
+        {/* Faint grid — softer, fades toward edges (sits on top of base glows) */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: isDark
+              ? "linear-gradient(rgba(177,18,38,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(177,18,38,0.05) 1px, transparent 1px)"
+              : "linear-gradient(rgba(122,15,24,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(122,15,24,0.04) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+            maskImage:
+              "radial-gradient(ellipse 65% 55% at 50% 50%, black 0%, rgba(0,0,0,0.45) 55%, transparent 92%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 65% 55% at 50% 50%, black 0%, rgba(0,0,0,0.45) 55%, transparent 92%)",
+            opacity: isDark ? 0.9 : 0.7,
+          }}
+        />
+
+        {/* Layer 2: Soft atmospheric red haze — ABOVE the grid, below content */}
         <div
           className="absolute inset-0"
           style={{
             background: isDark
-              ? "radial-gradient(ellipse 90% 55% at 50% 50%, rgba(177,18,38,0.09) 0%, rgba(177,18,38,0.05) 40%, transparent 75%)"
-              : "radial-gradient(ellipse 90% 55% at 50% 50%, rgba(177,18,38,0.04) 0%, rgba(177,18,38,0.02) 40%, transparent 75%)",
+              ? `radial-gradient(ellipse 90% 55% at 50% 50%, rgba(177,18,38,0.10) 0%, rgba(177,18,38,0.05) 40%, transparent 75%),
+                 radial-gradient(circle 550px at 75% 55%, rgba(177,18,38,0.12), transparent 65%),
+                 radial-gradient(circle 500px at 25% 45%, rgba(177,18,38,0.10), transparent 65%)`
+              : `radial-gradient(ellipse 90% 55% at 50% 50%, rgba(177,18,38,0.04) 0%, rgba(177,18,38,0.02) 40%, transparent 75%),
+                 radial-gradient(circle 550px at 75% 55%, rgba(177,18,38,0.05), transparent 65%),
+                 radial-gradient(circle 500px at 25% 45%, rgba(177,18,38,0.04), transparent 65%)`,
             filter: "blur(30px)",
           }}
         />
+
 
 
         {/* Floating particles — tiny, blurred, static */}
