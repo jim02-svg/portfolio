@@ -124,7 +124,16 @@ export function ProjectsSection() {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="project-card group relative rounded-2xl p-5">
-      <div className="project-card__image relative overflow-hidden rounded-xl aspect-[4/3]" />
+      <div className="project-card__image relative overflow-hidden rounded-xl aspect-[4/3]">
+        {project.image && (
+          <img
+            src={project.image}
+            alt={project.alt ?? project.title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        )}
+      </div>
 
       <h3 className="project-card__title mt-6 font-bold text-lg md:text-xl tracking-wide uppercase">
         {project.title}
