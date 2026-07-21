@@ -86,6 +86,38 @@ function Index() {
     if (stored === "light" || stored === "dark") setTheme(stored);
   }, []);
 
+  // Subtle mouse parallax for the red oval ring (desktop only).
+  useEffect(() => {
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (!fine.matches) return;
+    const el = document.querySelector<HTMLElement>(".portrait-ring-parallax");
+    if (!el) return;
+    const MAX = 12; // px
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+    const onMove = (e: MouseEvent) => {
+      const nx = (e.clientX / window.innerWidth) * 2 - 1;
+      const ny = (e.clientY / window.innerHeight) * 2 - 1;
+      tx = nx * MAX;
+      ty = ny * MAX;
+      if (!raf) raf = requestAnimationFrame(loop);
+    };
+    const loop = () => {
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
+      el.style.transform = `translate3d(${cx.toFixed(2)}px, ${cy.toFixed(2)}px, 0)`;
+      if (Math.abs(tx - cx) > 0.05 || Math.abs(ty - cy) > 0.05) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        raf = 0;
+      }
+    };
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   useEffect(() => {
     if (!mounted) return;
     const root = document.documentElement;
@@ -385,7 +417,16 @@ function Index() {
             <div
               className="relative mx-auto w-[72vw] max-w-[300px] aspect-[3/4] sm:w-[55vw] sm:max-w-[360px] md:w-[46vw] md:max-w-[420px] lg:aspect-auto lg:w-full lg:max-w-[min(540px,41vw)] lg:h-[clamp(340px,68vh,610px)]"
             >
-              <div aria-hidden className="portrait-outer-ring" />
+              <div
+                aria-hidden
+                className="portrait-ring-parallax absolute inset-0"
+                style={{ transform: "translate3d(0,0,0)" }}
+                onPointerDown={(e) => {
+                  window.dispatchEvent(new Event("portrait-ember-burst"));
+                }}
+              >
+                <div className="portrait-outer-ring" />
+              </div>
               <div className="portrait-inner-frame">
                 <img
                   src={portraitAsset.url}
