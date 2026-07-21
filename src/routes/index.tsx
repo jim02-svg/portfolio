@@ -420,7 +420,7 @@ function Index() {
               <div
                 aria-hidden
                 className="portrait-ring-parallax absolute inset-0"
-                style={{ transform: "translate3d(0,0,0)", transition: "transform 400ms cubic-bezier(0.22, 1, 0.36, 1)" }}
+                style={{ transform: "translate3d(0,0,0)" }}
                 onPointerDown={(e) => {
                   const el = e.currentTarget;
                   el.classList.add("ring-pulse-boost");
