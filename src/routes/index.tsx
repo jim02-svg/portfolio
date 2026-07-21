@@ -385,7 +385,19 @@ function Index() {
             <div
               className="relative mx-auto w-[72vw] max-w-[300px] aspect-[3/4] sm:w-[55vw] sm:max-w-[360px] md:w-[46vw] md:max-w-[420px] lg:aspect-auto lg:w-full lg:max-w-[min(540px,41vw)] lg:h-[clamp(340px,68vh,610px)]"
             >
-              <div aria-hidden className="portrait-outer-ring" />
+              <div
+                aria-hidden
+                className="portrait-ring-parallax absolute inset-0"
+                style={{ transform: "translate3d(0,0,0)", transition: "transform 400ms cubic-bezier(0.22, 1, 0.36, 1)" }}
+                onPointerDown={(e) => {
+                  const el = e.currentTarget;
+                  el.classList.add("ring-pulse-boost");
+                  window.dispatchEvent(new Event("portrait-ember-burst"));
+                  window.setTimeout(() => el.classList.remove("ring-pulse-boost"), 1000);
+                }}
+              >
+                <div className="portrait-outer-ring" />
+              </div>
               <div className="portrait-inner-frame">
                 <img
                   src={portraitAsset.url}
