@@ -46,6 +46,7 @@ export function AboutSection() {
         <div className="about-glow-1 absolute rounded-full" />
         <div className="about-glow-2 absolute rounded-full" />
         <div className="about-glow-3 absolute rounded-full" />
+        <div className="about-card-glow absolute rounded-full" />
         <div className="about-vignette absolute inset-0" />
       </div>
 
@@ -112,7 +113,7 @@ export function AboutSection() {
               {PERSONAL_INFO.map((item) => (
                 <div
                   key={item.label}
-                  className="about-info-row grid grid-cols-[auto_1fr] items-center gap-6 py-5 border-b last:border-b-0"
+                  className="about-info-row grid grid-cols-[auto_1fr] items-center gap-6 py-5 border-b border-red-500/20 last:border-b-0"
                 >
                   <div className="about-info-icon grid h-10 w-10 shrink-0 place-items-center rounded-xl">
                     <item.Icon className="h-5 w-5" strokeWidth={1.8} />
