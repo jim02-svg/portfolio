@@ -1,13 +1,22 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
 
 type Project = {
   title: string;
   description: string;
+  image?: string;
+  alt?: string;
 };
 
 const PROJECTS: Project[] = [
-  { title: "Title 1", description: "Description 1" },
+  {
+    title: "AI Voice Appointment Setter with Vapi",
+    description:
+      "An AI voice appointment setter built with Vapi that checks availability and manages bookings, updates, and cancellations automatically.",
+    image: appointmentSetterWorkflow.url,
+    alt: "AI Voice Appointment Setter workflow diagram",
+  },
   { title: "Title 2", description: "Description 2" },
   { title: "Title 3", description: "Description 3" },
   { title: "Title 4", description: "Description 4" },
@@ -115,7 +124,16 @@ export function ProjectsSection() {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="project-card group relative rounded-2xl p-5">
-      <div className="project-card__image relative overflow-hidden rounded-xl aspect-[4/3]" />
+      <div className="project-card__image relative overflow-hidden rounded-xl aspect-[4/3]">
+        {project.image && (
+          <img
+            src={project.image}
+            alt={project.alt ?? project.title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        )}
+      </div>
 
       <h3 className="project-card__title mt-6 font-bold text-lg md:text-xl tracking-wide uppercase">
         {project.title}
