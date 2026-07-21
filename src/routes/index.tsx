@@ -328,9 +328,10 @@ function Index() {
 
       {/* HERO */}
       <section
-        id="about"
+        id="home"
         className="relative overflow-hidden w-full flex items-center justify-center min-h-screen lg:h-screen pt-24 pb-12 md:pt-28 md:pb-10 lg:pt-[clamp(80px,10vh,120px)] lg:pb-[clamp(16px,3vh,40px)]"
       >
+
         {/* Grid + red radial glow background */}
         <div
           aria-hidden
