@@ -53,7 +53,7 @@ const CV_URL =
 
 function Index() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [active, setActive] = useState<string>("about");
+  const [active, setActive] = useState<string | null>(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const [mounted, setMounted] = useState(false);
@@ -179,11 +179,15 @@ function Index() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
+          if (entry.isIntersecting) {
+            setActive(entry.target.id === "home" ? null : entry.target.id);
+          }
         });
       },
       { rootMargin: "-40% 0px -50% 0px", threshold: 0 },
     );
+    const home = document.getElementById("home");
+    if (home) observer.observe(home);
     NAV_ITEMS.forEach((n) => {
       const el = document.getElementById(n.id);
       if (el) observer.observe(el);
