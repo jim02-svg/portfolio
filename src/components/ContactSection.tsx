@@ -67,114 +67,40 @@ export function ContactSection({ isDark }: Props) {
     >
       {/* Background layers */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
-        {/* Ambient radial glows — layered environmental lighting */}
-        {/* Top center — behind page title (very subtle) */}
-        <div
-          className="absolute rounded-full"
-          style={{
-            top: "-8%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "700px",
-            height: "700px",
-            background:
-              "radial-gradient(circle, rgba(177,18,38,0.07) 0%, rgba(177,18,38,0.03) 35%, transparent 70%)",
-            filter: "blur(60px)",
-            opacity: isDark ? 1 : 0.5,
-          }}
-        />
-        {/* Top right — largest, behind form */}
-        <div
-          className="absolute rounded-full"
-          style={{
-            top: "10%",
-            right: "-15%",
-            width: "900px",
-            height: "900px",
-            background:
-              "radial-gradient(circle, rgba(177,18,38,0.12) 0%, rgba(177,18,38,0.05) 35%, transparent 70%)",
-            filter: "blur(80px)",
-            opacity: isDark ? 1 : 0.45,
-          }}
-        />
-        {/* Bottom left — behind contact details */}
-        <div
-          className="absolute rounded-full"
-          style={{
-            bottom: "-10%",
-            left: "-10%",
-            width: "750px",
-            height: "750px",
-            background:
-              "radial-gradient(circle, rgba(177,18,38,0.09) 0%, rgba(177,18,38,0.04) 35%, transparent 70%)",
-            filter: "blur(80px)",
-            opacity: isDark ? 1 : 0.4,
-          }}
-        />
-        {/* Bottom right — near Send button */}
-        <div
-          className="absolute rounded-full"
-          style={{
-            bottom: "5%",
-            right: "8%",
-            width: "500px",
-            height: "500px",
-            background:
-              "radial-gradient(circle, rgba(177,18,38,0.10) 0%, rgba(177,18,38,0.04) 35%, transparent 70%)",
-            filter: "blur(70px)",
-            opacity: isDark ? 1 : 0.45,
-          }}
-        />
-        {/* Center-left — between contact cards */}
-        <div
-          className="absolute rounded-full"
-          style={{
-            top: "45%",
-            left: "12%",
-            width: "420px",
-            height: "420px",
-            background:
-              "radial-gradient(circle, rgba(177,18,38,0.06) 0%, rgba(177,18,38,0.03) 40%, transparent 70%)",
-            filter: "blur(70px)",
-            opacity: isDark ? 1 : 0.35,
-          }}
-        />
-        {/* Far right edge accent */}
-        <div
-          className="absolute rounded-full"
-          style={{
-            top: "55%",
-            right: "-8%",
-            width: "260px",
-            height: "260px",
-            background:
-              "radial-gradient(circle, rgba(177,18,38,0.08) 0%, rgba(177,18,38,0.03) 40%, transparent 70%)",
-            filter: "blur(50px)",
-            opacity: isDark ? 1 : 0.4,
-          }}
-        />
-
-        {/* Very faint grid */}
+        {/* Faint grid */}
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: isDark
-              ? "linear-gradient(rgba(177,18,38,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(177,18,38,0.035) 1px, transparent 1px)"
-              : "linear-gradient(rgba(122,15,24,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(122,15,24,0.04) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+              ? "linear-gradient(rgba(177,18,38,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(177,18,38,0.06) 1px, transparent 1px)"
+              : "linear-gradient(rgba(122,15,24,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(122,15,24,0.06) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
             maskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.5) 55%, transparent 90%)",
+              "radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.55) 55%, transparent 90%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.5) 55%, transparent 90%)",
+              "radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.55) 55%, transparent 90%)",
           }}
         />
-        {/* Soft vignette */}
+        {/* Soft crimson radial glow behind the form */}
+        <div
+          className="absolute"
+          style={{
+            top: "20%",
+            right: "-10%",
+            width: "60%",
+            height: "70%",
+            background:
+              "radial-gradient(circle at center, rgba(177,18,38,0.14) 0%, rgba(177,18,38,0.05) 40%, transparent 70%)",
+            filter: "blur(20px)",
+          }}
+        />
+        {/* Vignette */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.55) 100%)",
-            opacity: isDark ? 0.95 : 0.2,
+              "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%)",
+            opacity: isDark ? 0.9 : 0.25,
           }}
         />
       </div>
