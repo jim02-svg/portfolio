@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, X } from "lucide-react";
 import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
+import leadGenerationWorkflow from "@/assets/lead-generation-workflow.png.asset.json";
 
 type Project = {
   title: string;
