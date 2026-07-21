@@ -26,15 +26,16 @@ export const Route = createFileRoute("/")({
 const NAV_ITEMS = [
   { id: "about", label: "About Me" },
   { id: "services", label: "Services" },
-  { id: "sample", label: "Sample Work" },
+  { id: "projects", label: "Sample Work" },
   { id: "contact", label: "Contact" },
 ];
 
 const SERVICES = [
-  "Business Process Automation.",
-  "AI Lead Generation System.",
-  "AI Customer Support Agent.",
-  "CRM Automation System.",
+  "Workflow Automation",
+  "AI Chatbots & Agents",
+  "CRM Pipeline Management",
+  "Process Optimization",
+  "API Integration",
 ];
 
 
@@ -606,7 +607,6 @@ function Index() {
 
       <ServicesSection />
       <ProjectsSection />
-      <section id="sample" className="min-h-[10vh]" />
       <ContactSection isDark={isDark} />
 
       <div id="n8n-chat" />
