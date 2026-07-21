@@ -521,54 +521,53 @@ function Index() {
               costs, and help businesses scale faster.
             </p>
 
-            <div
-              className="flex flex-wrap justify-center lg:justify-start gap-3 w-full"
-              style={{ marginBottom: "clamp(0.5rem, 1.4vh, 0.875rem)" }}
-            >
-              <a
-                href={CV_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center gap-2 rounded-md bg-[#b70000] font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#9d0000] hover:shadow-[0_10px_30px_rgba(183,0,0,0.5)] min-h-[44px]"
-                style={{ padding: "0.65rem 1.25rem", fontSize: "clamp(0.85rem, 1.1vw, 1rem)" }}
-              >
-                <Download className="h-4 w-4" />
-                Download CV
-              </a>
-              <a
-                href="mailto:jimrexraagas01@gmail.com"
-                className="mail-beam-btn group inline-flex items-center gap-2 rounded-md font-bold min-h-[44px]"
-                style={{ padding: "0.65rem 1.25rem", fontSize: "clamp(0.85rem, 1.1vw, 1rem)" }}
-              >
-                <Mail className="h-4 w-4" />
-                Mail Me
-              </a>
-            </div>
-
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-              <div className="flex items-center gap-2 order-1 lg:order-2">
-                {SOCIALS.map(({ href, label, Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={label}
-                    className="grid h-10 w-10 lg:h-9 lg:w-9 place-items-center rounded-md border border-[#b70000] text-[#b70000] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#b70000] hover:text-white hover:shadow-[0_0_18px_rgba(183,0,0,0.6)]"
-                  >
-                    <Icon className="h-4 w-4 lg:h-3.5 lg:w-3.5" />
-                  </a>
-                ))}
+            <div className="flex flex-col items-center lg:items-start gap-3 w-full">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                <a
+                  href={CV_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-md bg-[#b70000] font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#9d0000] hover:shadow-[0_10px_30px_rgba(183,0,0,0.5)] min-h-[44px]"
+                  style={{ padding: "0.65rem 1.25rem", fontSize: "clamp(0.85rem, 1.1vw, 1rem)" }}
+                >
+                  <Download className="h-4 w-4" />
+                  Download CV
+                </a>
+                <a
+                  href="mailto:jimrexraagas01@gmail.com"
+                  className="mail-beam-btn group inline-flex items-center gap-2 rounded-md font-bold min-h-[44px]"
+                  style={{ padding: "0.65rem 1.25rem", fontSize: "clamp(0.85rem, 1.1vw, 1rem)" }}
+                >
+                  <Mail className="h-4 w-4" />
+                  Mail Me
+                </a>
               </div>
-              <div
-                className={`inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-xs order-2 lg:order-1 ${
-                  isDark
-                    ? "border-white/10 bg-black/50 text-white"
-                    : "border-black/10 bg-white text-neutral-900"
-                }`}
-              >
-                <MapPin className="h-3.5 w-3.5 text-[#b70000]" />
-                Bulacan, Philippines
+
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                <div
+                  className={`inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-xs ${
+                    isDark
+                      ? "border-white/10 bg-black/50 text-white"
+                      : "border-black/10 bg-white text-neutral-900"
+                  }`}
+                >
+                  <MapPin className="h-3.5 w-3.5 text-[#b70000]" />
+                  Bulacan, Philippines
+                </div>
+                <div className="flex items-center gap-2">
+                  {SOCIALS.map(({ href, label, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      className="grid h-10 w-10 lg:h-9 lg:w-9 place-items-center rounded-md border border-[#b70000] text-[#b70000] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#b70000] hover:text-white hover:shadow-[0_0_18px_rgba(183,0,0,0.6)]"
+                    >
+                      <Icon className="h-4 w-4 lg:h-3.5 lg:w-3.5" />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
