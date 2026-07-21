@@ -53,7 +53,7 @@ const CV_URL =
 
 function Index() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [active, setActive] = useState<string>("about");
+  const [active, setActive] = useState<string | null>(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const [mounted, setMounted] = useState(false);
