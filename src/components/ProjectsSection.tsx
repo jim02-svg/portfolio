@@ -212,40 +212,42 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <X className="h-5 w-5" />
         </button>
 
-        <div className="overflow-auto bg-black/40 p-2 rounded-t-xl">
+        <div className="flex-shrink-0 overflow-hidden bg-black/40 p-1 rounded-t-xl" style={{ height: "70%", maxHeight: "70vh" }}>
           {project.image ? (
             <img
               src={project.image}
               alt={project.alt ?? project.title}
-              className="w-full max-h-[65vh] object-contain rounded-lg"
+              className="w-full h-full object-contain rounded-lg"
             />
           ) : (
-            <div className="w-full h-[40vh] grid place-items-center text-white/40">
+            <div className="w-full h-full grid place-items-center text-white/40">
               No preview available
             </div>
           )}
         </div>
 
-        <div className="p-6 md:p-8 overflow-auto">
-          <h3 className="text-white text-2xl md:text-3xl font-bold tracking-tight normal-case">
-            {project.title}
-          </h3>
-          <p className="mt-3 text-white/70 text-sm md:text-base leading-relaxed normal-case whitespace-pre-line">
-            {project.fullDescription}
-          </p>
+        <div className="flex-1 p-4 overflow-y-auto">
+          <div className="space-y-3">
+            <h3 className="text-white text-xl md:text-2xl font-bold tracking-tight normal-case">
+              {project.title}
+            </h3>
+            <p className="text-white/70 text-sm md:text-base leading-relaxed normal-case whitespace-pre-line">
+              {project.fullDescription}
+            </p>
 
-          {project.tech && project.tech.length > 0 && (
-            <div className="mt-5 flex flex-wrap gap-2">
-              {project.tech.map((t) => (
-                <span
-                  key={t}
-                  className="px-3 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-300 border border-red-500/30"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          )}
+            {project.tech && project.tech.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-300 border border-red-500/30"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
