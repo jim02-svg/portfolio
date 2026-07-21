@@ -105,7 +105,7 @@ export function AboutSection() {
           </div>
 
           {/* Right column: Personal info */}
-          <div className="about-info-card bg-zinc-900/40 backdrop-blur-md border border-red-500/30 shadow-[0_8px_32px_0_rgba(255,0,0,0.15)] rounded-3xl p-8 md:p-10">
+          <div className="about-info-card rounded-3xl p-8 md:p-10">
             <h3 className="about-info-title text-xl md:text-2xl font-bold text-white mb-8">
               Personal Info
             </h3>

@@ -1006,9 +1006,9 @@ section[id] {
 }
 
 .about-info-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  background: rgba(24, 24, 27, 0.40);
   border: 1px solid rgba(229,9,20,0.30);
-  backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.06),
     0 0 40px rgba(229,9,20,0.12),
@@ -1016,7 +1016,7 @@ section[id] {
     0 16px 48px rgba(0,0,0,0.35);
 }
 :root:not(.dark) .about-info-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.35) 100%);
+  background: rgba(255, 255, 255, 0.45);
   border-color: rgba(229,9,20,0.28);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.8),
