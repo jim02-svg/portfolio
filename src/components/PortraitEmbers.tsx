@@ -99,13 +99,21 @@ export function PortraitEmbers({ emitterSelector }: Props) {
 
     let last = performance.now();
     let rafId = 0;
+    let burstUntil = 0;
+    const onBurst = () => {
+      burstUntil = performance.now() + 1000;
+      // Immediate visible bump
+      for (let i = 0; i < 40; i++) particles.push(spawn());
+    };
+    window.addEventListener("portrait-ember-burst", onBurst);
     const tick = (now: number) => {
       const dt = Math.min(32, now - last) / 16.6667;
       last = now;
       ctx.clearRect(0, 0, width, height);
       ctx.globalCompositeOperation = "lighter";
 
-      const target = 160;
+      const bursting = now < burstUntil;
+      const target = bursting ? 260 : 160;
       while (particles.length < target) particles.push(spawn());
 
       for (let i = particles.length - 1; i >= 0; i--) {
@@ -147,6 +155,7 @@ export function PortraitEmbers({ emitterSelector }: Props) {
       ro.disconnect();
       window.removeEventListener("scroll", measure);
       window.removeEventListener("resize", measure);
+      window.removeEventListener("portrait-ember-burst", onBurst);
     };
   }, [emitterSelector]);
 
