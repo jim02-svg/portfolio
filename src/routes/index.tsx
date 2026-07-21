@@ -386,7 +386,7 @@ function Index() {
           />
         </div>
 
-        <div className="relative max-w-[110rem] mx-auto w-full px-5 sm:px-8 md:px-12 flex flex-col lg:grid lg:grid-cols-12 gap-6 md:gap-10 lg:gap-8 items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:grid lg:grid-cols-12 gap-8 md:gap-10 items-center">
 
           {/* PORTRAIT — appears first on mobile/tablet, middle column on desktop */}
           <div className="order-1 lg:order-2 lg:col-span-5 relative z-[25] flex justify-center items-center w-full">
