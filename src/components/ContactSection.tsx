@@ -67,43 +67,85 @@ export function ContactSection({ isDark }: Props) {
     >
       {/* Background layers */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
-        {/* Faint grid */}
+        {/* Faint grid — softer, fades toward edges */}
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: isDark
-              ? "linear-gradient(rgba(177,18,38,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(177,18,38,0.06) 1px, transparent 1px)"
-              : "linear-gradient(rgba(122,15,24,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(122,15,24,0.06) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
+              ? "linear-gradient(rgba(177,18,38,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(177,18,38,0.05) 1px, transparent 1px)"
+              : "linear-gradient(rgba(122,15,24,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(122,15,24,0.04) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
             maskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.55) 55%, transparent 90%)",
+              "radial-gradient(ellipse 65% 55% at 50% 50%, black 0%, rgba(0,0,0,0.45) 55%, transparent 92%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.55) 55%, transparent 90%)",
+              "radial-gradient(ellipse 65% 55% at 50% 50%, black 0%, rgba(0,0,0,0.45) 55%, transparent 92%)",
+            opacity: isDark ? 0.9 : 0.7,
           }}
         />
-        {/* Soft crimson radial glow behind the form */}
+
+        {/* Distributed soft crimson radial glows */}
         <div
-          className="absolute"
+          className="absolute inset-0"
           style={{
-            top: "20%",
-            right: "-10%",
-            width: "60%",
-            height: "70%",
-            background:
-              "radial-gradient(circle at center, rgba(177,18,38,0.14) 0%, rgba(177,18,38,0.05) 40%, transparent 70%)",
-            filter: "blur(20px)",
+            background: isDark
+              ? `radial-gradient(circle at 50% 8%, rgba(177,18,38,0.09), transparent 32%),
+                 radial-gradient(circle at 18% 30%, rgba(177,18,38,0.08), transparent 32%),
+                 radial-gradient(circle at 82% 22%, rgba(177,18,38,0.07), transparent 36%),
+                 radial-gradient(circle at 75% 70%, rgba(177,18,38,0.10), transparent 40%),
+                 radial-gradient(circle at 20% 82%, rgba(177,18,38,0.06), transparent 32%),
+                 radial-gradient(circle at 88% 92%, rgba(177,18,38,0.05), transparent 30%)`
+              : `radial-gradient(circle at 50% 8%, rgba(177,18,38,0.05), transparent 32%),
+                 radial-gradient(circle at 18% 30%, rgba(177,18,38,0.04), transparent 32%),
+                 radial-gradient(circle at 82% 22%, rgba(177,18,38,0.035), transparent 36%),
+                 radial-gradient(circle at 75% 70%, rgba(177,18,38,0.05), transparent 40%),
+                 radial-gradient(circle at 20% 82%, rgba(177,18,38,0.03), transparent 32%),
+                 radial-gradient(circle at 88% 92%, rgba(177,18,38,0.025), transparent 30%)`,
+            filter: "blur(24px)",
           }}
         />
-        {/* Vignette */}
+
+        {/* Floating particles — tiny, blurred, static */}
+        <div className="absolute inset-0">
+          {[
+            { top: "12%", left: "22%", size: 3, o: 0.35 },
+            { top: "18%", left: "68%", size: 2, o: 0.25 },
+            { top: "32%", left: "88%", size: 4, o: 0.3 },
+            { top: "44%", left: "8%", size: 2, o: 0.28 },
+            { top: "56%", left: "52%", size: 3, o: 0.22 },
+            { top: "62%", left: "80%", size: 2, o: 0.3 },
+            { top: "72%", left: "28%", size: 4, o: 0.28 },
+            { top: "82%", left: "62%", size: 2, o: 0.24 },
+            { top: "88%", left: "14%", size: 3, o: 0.26 },
+            { top: "26%", left: "44%", size: 2, o: 0.2 },
+          ].map((p, i) => (
+            <span
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                top: p.top,
+                left: p.left,
+                width: p.size,
+                height: p.size,
+                background: CRIMSON,
+                opacity: isDark ? p.o : p.o * 0.5,
+                filter: "blur(1.5px)",
+                boxShadow: `0 0 ${p.size * 3}px rgba(177,18,38,0.35)`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Ambient vignette */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%)",
-            opacity: isDark ? 0.9 : 0.25,
+              "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.55) 100%)",
+            opacity: isDark ? 0.85 : 0.18,
           }}
         />
       </div>
+
 
       <div className="relative max-w-6xl mx-auto px-5 sm:px-8 md:px-12">
         {/* Header */}
