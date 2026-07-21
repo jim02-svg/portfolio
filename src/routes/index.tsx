@@ -215,71 +215,69 @@ function Index() {
           </button>
           {/* Mobile hamburger */}
           <button
-            onClick={() => setMobileNavOpen(true)}
-            aria-label="Open menu"
+            onClick={() => setMobileNavOpen((v) => !v)}
+            aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileNavOpen}
             className={`md:hidden relative h-10 w-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 hover:scale-110 ${
               isDark
                 ? "border-[#b70000] text-[#b70000] bg-black/60 hover:shadow-[0_0_20px_rgba(183,0,0,0.55)]"
                 : "border-[#9d1318] text-[#9d1318] bg-white/70 hover:shadow-[0_0_20px_rgba(157,19,24,0.45)]"
             }`}
           >
-            <Menu className="h-5 w-5" />
+            <Menu
+              className={`h-5 w-5 absolute transition-all duration-300 ${
+                mobileNavOpen ? "opacity-0 rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"
+              }`}
+            />
+            <X
+              className={`h-5 w-5 absolute transition-all duration-300 ${
+                mobileNavOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-75"
+              }`}
+            />
           </button>
         </div>
       </nav>
 
-      {/* MOBILE MENU OVERLAY */}
-      <div
-        className={`md:hidden fixed inset-0 z-[60] transition-all duration-500 ${
-          mobileNavOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      >
+      {/* MOBILE FLOATING DROPDOWN PANEL */}
+      {mobileNavOpen && (
         <div
-          className="absolute inset-0 backdrop-blur-xl"
-          style={{
-            background: isDark
-              ? "radial-gradient(ellipse at top right, rgba(157,19,24,0.35) 0%, rgba(10,0,0,0.92) 55%, rgba(0,0,0,0.96) 100%)"
-              : "radial-gradient(ellipse at top right, rgba(157,19,24,0.18) 0%, rgba(247,245,242,0.95) 60%, rgba(247,245,242,0.98) 100%)",
-          }}
+          className="md:hidden fixed inset-0 z-[55]"
           onClick={() => setMobileNavOpen(false)}
+          aria-hidden="true"
         />
-        <button
-          onClick={() => setMobileNavOpen(false)}
-          aria-label="Close menu"
-          className={`absolute top-5 right-6 h-10 w-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 hover:scale-110 ${
-            isDark
-              ? "border-[#b70000] text-[#b70000] bg-black/60"
-              : "border-[#9d1318] text-[#9d1318] bg-white/70"
-          }`}
-        >
-          <X className="h-5 w-5" />
-        </button>
-        <ul
-          className={`relative flex flex-col items-center justify-center h-full gap-8 transition-transform duration-500 ${
-            mobileNavOpen ? "translate-y-0" : "-translate-y-6"
-          }`}
-        >
-          {NAV_ITEMS.map((item, i) => {
+      )}
+      <div
+        role="menu"
+        aria-hidden={!mobileNavOpen}
+        className={`md:hidden fixed top-20 right-4 z-[60] w-[240px] rounded-[20px] p-5 backdrop-blur-xl border transition-all duration-300 ease-in-out origin-top-right ${
+          mobileNavOpen
+            ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+            : "opacity-0 -translate-y-3 scale-95 pointer-events-none"
+        }`}
+        style={{
+          background: isDark
+            ? "linear-gradient(160deg, rgba(15,4,6,0.92) 0%, rgba(60,8,12,0.88) 100%)"
+            : "linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(255,225,228,0.9) 100%)",
+          borderColor: isDark ? "rgba(183,0,0,0.45)" : "rgba(157,19,24,0.35)",
+          boxShadow: isDark
+            ? "0 12px 40px rgba(0,0,0,0.55), 0 0 20px rgba(183,0,0,0.25)"
+            : "0 12px 40px rgba(157,19,24,0.18), 0 0 16px rgba(157,19,24,0.15)",
+        }}
+      >
+        <ul className="flex flex-col items-center gap-1">
+          {NAV_ITEMS.map((item) => {
             const isActive = active === item.id;
             return (
-              <li
-                key={item.id}
-                style={{
-                  transitionDelay: mobileNavOpen ? `${80 + i * 60}ms` : "0ms",
-                  opacity: mobileNavOpen ? 1 : 0,
-                  transform: mobileNavOpen ? "translateY(0)" : "translateY(12px)",
-                  transition: "opacity 400ms ease, transform 400ms ease",
-                }}
-              >
+              <li key={item.id} className="w-full">
                 <a
                   href={`#${item.id}`}
                   onClick={() => setMobileNavOpen(false)}
-                  className={`uppercase text-2xl font-bold tracking-[0.25em] transition-colors ${
+                  className={`block w-full text-center uppercase text-sm font-semibold tracking-[0.2em] py-3 rounded-lg transition-all duration-200 active:scale-95 ${
                     isActive
                       ? "text-[#b70000]"
                       : isDark
-                        ? "text-white hover:text-[#b70000]"
-                        : "text-neutral-900 hover:text-[#9d1318]"
+                        ? "text-white hover:text-[#b70000] hover:bg-white/5"
+                        : "text-neutral-900 hover:text-[#9d1318] hover:bg-black/5"
                   }`}
                 >
                   {item.label}
