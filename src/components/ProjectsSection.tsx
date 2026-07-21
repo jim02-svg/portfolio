@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, X } from "lucide-react";
 import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
 
 type Project = {
@@ -7,6 +7,7 @@ type Project = {
   description: string;
   image?: string;
   alt?: string;
+  tech?: string[];
 };
 
 const PROJECTS: Project[] = [
@@ -16,6 +17,7 @@ const PROJECTS: Project[] = [
       "An AI voice appointment setter built with Vapi that checks availability and manages bookings, updates, and cancellations automatically.",
     image: appointmentSetterWorkflow.url,
     alt: "AI Voice Appointment Setter workflow diagram",
+    tech: ["n8n", "Vapi", "Webhooks", "Calendar", "Sheets"],
   },
   { title: "Title 2", description: "Description 2" },
   { title: "Title 3", description: "Description 3" },
@@ -26,8 +28,23 @@ const PROJECTS: Project[] = [
 
 export function ProjectsSection() {
   const [showAll, setShowAll] = useState(false);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
   const initial = PROJECTS.slice(0, 3);
   const extra = PROJECTS.slice(3);
+
+  useEffect(() => {
+    if (!activeProject) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveProject(null);
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [activeProject]);
 
   return (
     <section
@@ -72,7 +89,7 @@ export function ProjectsSection() {
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-8">
           {initial.map((p) => (
-            <ProjectCard key={p.title} project={p} />
+            <ProjectCard key={p.title} project={p} onOpen={() => setActiveProject(p)} />
           ))}
         </div>
 
@@ -96,7 +113,7 @@ export function ProjectsSection() {
                 transform: showAll ? "translateY(0)" : "translateY(20px)",
               }}
             >
-              <ProjectCard project={p} />
+              <ProjectCard project={p} onOpen={() => setActiveProject(p)} />
             </div>
           ))}
         </div>
@@ -117,13 +134,21 @@ export function ProjectsSection() {
           </button>
         </div>
       </div>
+
+      {activeProject && (
+        <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+      )}
     </section>
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void }) {
   return (
-    <div className="project-card group relative rounded-2xl p-5">
+    <button
+      type="button"
+      onClick={onOpen}
+      className="project-card group relative rounded-2xl p-5 cursor-pointer text-left w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+    >
       <div className="project-card__image relative overflow-hidden rounded-xl aspect-[4/3]">
         {project.image && (
           <img
@@ -141,6 +166,69 @@ function ProjectCard({ project }: { project: Project }) {
       <p className="project-card__desc mt-2 text-sm md:text-[0.95rem] uppercase tracking-[0.15em]">
         {project.description}
       </p>
+    </button>
+  );
+}
+
+function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={project.title}
+    >
+      <div
+        className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-2xl border border-red-500/30 bg-[#0d1117]/95 shadow-[0_0_60px_-10px_rgba(239,68,68,0.35)] flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+        style={{ animation: "modalIn 220ms ease-out" }}
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute top-3 right-3 z-10 grid place-items-center h-10 w-10 rounded-full bg-black/60 text-white hover:bg-red-600/80 border border-white/10 transition-colors"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        <div className="overflow-auto bg-black/40 p-2 rounded-t-xl">
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.alt ?? project.title}
+              className="w-full max-h-[65vh] object-contain rounded-lg"
+            />
+          ) : (
+            <div className="w-full h-[40vh] grid place-items-center text-white/40">
+              No preview available
+            </div>
+          )}
+        </div>
+
+        <div className="p-6 md:p-8 overflow-auto">
+          <h3 className="text-white text-2xl md:text-3xl font-bold tracking-tight normal-case">
+            {project.title}
+          </h3>
+          <p className="mt-3 text-white/70 text-sm md:text-base leading-relaxed normal-case">
+            {project.description}
+          </p>
+
+          {project.tech && project.tech.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {project.tech.map((t) => (
+                <span
+                  key={t}
+                  className="px-3 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-300 border border-red-500/30"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
