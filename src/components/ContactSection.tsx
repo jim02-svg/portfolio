@@ -16,6 +16,9 @@ const DETAILS = [
   { Icon: MapPin, label: "LOCATION", value: "Bulacan, Philippines" },
 ];
 
+const CRIMSON = "#B11226";
+const CRIMSON_DARK = "#7A0F18";
+
 export function ContactSection({ isDark }: Props) {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [focused, setFocused] = useState<string | null>(null);
@@ -29,83 +32,107 @@ export function ContactSection({ isDark }: Props) {
     window.location.href = `mailto:jimrexraagas01@gmail.com?subject=${subject}&body=${body}`;
   };
 
-  const cardBg = isDark
-    ? "linear-gradient(160deg, rgba(20,8,10,0.65) 0%, rgba(30,6,10,0.5) 100%)"
-    : "linear-gradient(160deg, rgba(255,255,255,0.8) 0%, rgba(255,240,242,0.65) 100%)";
-  const cardBorder = isDark ? "rgba(183,0,0,0.25)" : "rgba(157,19,24,0.18)";
+  // Glass tokens — subtle, premium
+  const glassBg = isDark ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.65)";
+  const glassBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
+  const iconTileBg = isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)";
+  const iconTileBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
 
-  const inputBg = isDark ? "rgba(10,10,15,0.75)" : "rgba(255,255,255,0.85)";
-  const inputBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
+  const mutedText = isDark ? "#B3B3B3" : "#5c5c5c";
+  const primaryText = isDark ? "#F5F5F5" : "#111111";
+
+  const inputBg = isDark ? "#111111" : "#ffffff";
+  const inputBorderIdle = isDark ? "rgba(255,255,255,0.10)" : "rgba(0,0,0,0.10)";
 
   const inputBase =
-    "w-full rounded-lg px-4 py-3 text-sm outline-none transition-all duration-300 border";
+    "w-full rounded-lg px-4 py-3 text-sm outline-none transition-all duration-300 border placeholder:text-[#777]";
 
   const inputStyle = (key: string): React.CSSProperties => ({
     background: inputBg,
-    borderColor: focused === key ? "#b70000" : inputBorder,
-    color: isDark ? "#fff" : "#0a0a0a",
-    boxShadow:
-      focused === key
-        ? "0 0 0 3px rgba(183,0,0,0.18), 0 0 20px rgba(183,0,0,0.25)"
-        : "none",
+    borderColor: focused === key ? CRIMSON : inputBorderIdle,
+    color: primaryText,
+    boxShadow: focused === key ? `0 0 0 3px rgba(177,18,38,0.12)` : "none",
   });
 
   return (
     <section
       id="contact"
-      className="relative overflow-hidden py-24 md:py-28"
+      className="relative overflow-hidden py-28 md:py-36"
       style={{
-        background: isDark ? "#0a0a0a" : "#f7f5f2",
-        color: isDark ? "#fff" : "#0a0a0a",
+        background: isDark
+          ? "linear-gradient(180deg, #090909 0%, #111111 100%)"
+          : "linear-gradient(180deg, #f7f5f2 0%, #efece7 100%)",
+        color: primaryText,
       }}
     >
-      {/* Background (matches Hero) */}
+      {/* Background layers */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
+        {/* Faint grid */}
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: isDark
-              ? "linear-gradient(rgba(183,0,0,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(183,0,0,0.18) 1px, transparent 1px)"
-              : "linear-gradient(rgba(157,19,24,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(157,19,24,0.12) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
+              ? "linear-gradient(rgba(177,18,38,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(177,18,38,0.06) 1px, transparent 1px)"
+              : "linear-gradient(rgba(122,15,24,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(122,15,24,0.06) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
             maskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, rgba(0,0,0,0.5) 55%, transparent 88%)",
+              "radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.55) 55%, transparent 90%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, rgba(0,0,0,0.5) 55%, transparent 88%)",
+              "radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.55) 55%, transparent 90%)",
           }}
         />
+        {/* Soft crimson radial glow behind the form */}
+        <div
+          className="absolute"
+          style={{
+            top: "20%",
+            right: "-10%",
+            width: "60%",
+            height: "70%",
+            background:
+              "radial-gradient(circle at center, rgba(177,18,38,0.14) 0%, rgba(177,18,38,0.05) 40%, transparent 70%)",
+            filter: "blur(20px)",
+          }}
+        />
+        {/* Vignette */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 55% 55% at 50% 40%, rgba(183,0,0,0.20) 0%, rgba(157,19,24,0.08) 45%, rgba(0,0,0,0) 75%)",
+              "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%)",
+            opacity: isDark ? 0.9 : 0.25,
           }}
         />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-5 sm:px-8 md:px-12">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-16 md:mb-20">
           <p
-            className="uppercase font-bold tracking-[0.35em] text-[#b70000] text-xs md:text-sm mb-3"
+            className="uppercase font-semibold tracking-[0.4em] text-xs mb-4"
+            style={{ color: CRIMSON }}
           >
             Get In Touch
           </p>
           <h2
             style={{
               fontFamily: "Anton, Impact, sans-serif",
-              fontWeight: 800,
-              letterSpacing: "1.5px",
-              fontSize: "clamp(2rem, 5vw, 3.75rem)",
+              fontWeight: 700,
+              letterSpacing: "1px",
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
               lineHeight: 1.05,
+              color: primaryText,
             }}
           >
             Let's Automate Your Business
           </h2>
-          <div className="mx-auto mt-4 h-[3px] w-16 rounded-full bg-[#b70000]" />
+          <div
+            className="mx-auto mt-5 h-[2px] w-16 rounded-full"
+            style={{ background: `linear-gradient(90deg, transparent, ${CRIMSON}, transparent)` }}
+          />
           <p
-            className={`mt-5 max-w-2xl mx-auto ${isDark ? "text-white/70" : "text-neutral-700"}`}
-            style={{ fontSize: "clamp(0.9rem, 1.1vw, 1.05rem)" }}
+            className="mt-6 max-w-2xl mx-auto"
+            style={{ color: mutedText, fontSize: "clamp(0.9rem, 1.1vw, 1.05rem)", lineHeight: 1.6 }}
           >
             Have an automation project in mind? I'd love to help you build smarter systems
             for your business.
@@ -113,77 +140,130 @@ export function ContactSection({ isDark }: Props) {
         </div>
 
         {/* Two-column grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10">
-          {/* Contact details */}
-          <div className="lg:col-span-2 space-y-6">
-            <h3
-              className="text-xl font-bold"
-              style={{ letterSpacing: "0.5px" }}
-            >
-              Contact Details
-            </h3>
-            <div className="space-y-4">
-              {DETAILS.map(({ Icon, label, value }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-4 rounded-xl border p-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(183,0,0,0.18)]"
-                  style={{ background: cardBg, borderColor: cardBorder }}
-                >
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14">
+          {/* Left: details + socials */}
+          <div className="lg:col-span-2 space-y-10">
+            <div className="space-y-5">
+              <h3
+                className="text-[11px] uppercase font-semibold tracking-[0.35em]"
+                style={{ color: mutedText }}
+              >
+                Contact Details
+              </h3>
+              <div className="space-y-3">
+                {DETAILS.map(({ Icon, label, value }) => (
                   <div
-                    className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border"
+                    key={label}
+                    className="group flex items-center gap-4 p-4 transition-all duration-300 hover:-translate-y-0.5"
                     style={{
-                      borderColor: "rgba(183,0,0,0.5)",
-                      background: isDark ? "rgba(183,0,0,0.08)" : "rgba(183,0,0,0.06)",
-                      color: "#b70000",
-                      boxShadow: "0 0 20px rgba(183,0,0,0.15)",
+                      background: glassBg,
+                      border: `1px solid ${glassBorder}`,
+                      borderRadius: 18,
+                      backdropFilter: "blur(16px)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = CRIMSON;
+                      e.currentTarget.style.boxShadow = "0 0 25px rgba(177,18,38,0.18)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = glassBorder;
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   >
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-xs font-bold tracking-[0.25em] text-[#b70000]">
-                      {label}
-                    </p>
-                    <p
-                      className={`mt-1 font-medium truncate ${isDark ? "text-white" : "text-neutral-900"}`}
+                    <div
+                      className="grid h-11 w-11 shrink-0 place-items-center"
+                      style={{
+                        background: iconTileBg,
+                        border: `1px solid ${iconTileBorder}`,
+                        borderRadius: 12,
+                        color: CRIMSON,
+                      }}
                     >
-                      {value}
-                    </p>
+                      <Icon className="h-[18px] w-[18px]" />
+                    </div>
+                    <div className="min-w-0">
+                      <p
+                        className="text-[10px] font-semibold tracking-[0.3em] uppercase"
+                        style={{ color: mutedText }}
+                      >
+                        {label}
+                      </p>
+                      <p
+                        className="mt-1 text-sm font-medium truncate"
+                        style={{ color: primaryText }}
+                      >
+                        {value}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Socials */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              {SOCIALS.map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-3 rounded-xl border px-4 py-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#b70000] hover:shadow-[0_10px_28px_rgba(183,0,0,0.28)]"
-                  style={{ background: cardBg, borderColor: cardBorder }}
-                >
-                  <Icon className="h-4 w-4 text-[#b70000]" />
-                  <span className={`text-sm font-semibold ${isDark ? "text-white" : "text-neutral-900"}`}>
-                    {label}
-                  </span>
-                </a>
-              ))}
+            <div className="space-y-5">
+              <h3
+                className="text-[11px] uppercase font-semibold tracking-[0.35em]"
+                style={{ color: mutedText }}
+              >
+                Follow Me
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {SOCIALS.map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-3 px-4 py-3 transition-all duration-300 hover:-translate-y-0.5"
+                    style={{
+                      background: glassBg,
+                      border: `1px solid ${glassBorder}`,
+                      borderRadius: 14,
+                      backdropFilter: "blur(16px)",
+                      color: primaryText,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = isDark
+                        ? "rgba(255,255,255,0.06)"
+                        : "rgba(255,255,255,0.9)";
+                      e.currentTarget.style.borderColor = CRIMSON;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = glassBg;
+                      e.currentTarget.style.borderColor = glassBorder;
+                    }}
+                  >
+                    <Icon className="h-4 w-4" style={{ color: CRIMSON }} />
+                    <span className="text-sm font-medium">{label}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Form */}
+          {/* Right: form panel */}
           <form
             onSubmit={handleSubmit}
-            className="lg:col-span-3 rounded-2xl border p-6 md:p-8 backdrop-blur-md"
-            style={{ background: cardBg, borderColor: cardBorder }}
+            className="lg:col-span-3"
+            style={{
+              background: glassBg,
+              border: `1px solid ${glassBorder}`,
+              borderRadius: 24,
+              backdropFilter: "blur(18px)",
+              padding: "clamp(24px, 3vw, 36px)",
+              boxShadow: isDark
+                ? "0 30px 80px rgba(0,0,0,0.45)"
+                : "0 20px 60px rgba(0,0,0,0.08)",
+            }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-sm font-semibold mb-2">
-                  Name <span className="text-[#b70000]">*</span>
+                <label
+                  className="block text-[11px] uppercase font-semibold tracking-[0.25em] mb-2"
+                  style={{ color: mutedText }}
+                >
+                  Name <span style={{ color: CRIMSON }}>*</span>
                 </label>
                 <input
                   required
@@ -198,8 +278,11 @@ export function ContactSection({ isDark }: Props) {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold mb-2">
-                  Email <span className="text-[#b70000]">*</span>
+                <label
+                  className="block text-[11px] uppercase font-semibold tracking-[0.25em] mb-2"
+                  style={{ color: mutedText }}
+                >
+                  Email <span style={{ color: CRIMSON }}>*</span>
                 </label>
                 <input
                   required
@@ -216,7 +299,12 @@ export function ContactSection({ isDark }: Props) {
             </div>
 
             <div className="mt-5">
-              <label className="block text-sm font-semibold mb-2">Subject</label>
+              <label
+                className="block text-[11px] uppercase font-semibold tracking-[0.25em] mb-2"
+                style={{ color: mutedText }}
+              >
+                Subject
+              </label>
               <input
                 type="text"
                 value={form.subject}
@@ -230,8 +318,11 @@ export function ContactSection({ isDark }: Props) {
             </div>
 
             <div className="mt-5">
-              <label className="block text-sm font-semibold mb-2">
-                Message <span className="text-[#b70000]">*</span>
+              <label
+                className="block text-[11px] uppercase font-semibold tracking-[0.25em] mb-2"
+                style={{ color: mutedText }}
+              >
+                Message <span style={{ color: CRIMSON }}>*</span>
               </label>
               <textarea
                 required
@@ -248,12 +339,21 @@ export function ContactSection({ isDark }: Props) {
 
             <button
               type="submit"
-              className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-md font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(183,0,0,0.55)] min-h-[48px]"
+              className="mt-7 w-full inline-flex items-center justify-center gap-2 rounded-xl font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 min-h-[52px]"
               style={{
-                background: "linear-gradient(135deg, #b70000 0%, #7c0000 100%)",
-                padding: "0.85rem 1.25rem",
-                fontSize: "clamp(0.9rem, 1.1vw, 1rem)",
-                letterSpacing: "0.5px",
+                background: `linear-gradient(90deg, ${CRIMSON_DARK} 0%, ${CRIMSON} 100%)`,
+                padding: "0.9rem 1.25rem",
+                fontSize: "0.95rem",
+                letterSpacing: "0.3px",
+                boxShadow: "0 10px 30px rgba(177,18,38,0.25)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = "brightness(1.08)";
+                e.currentTarget.style.boxShadow = "0 14px 40px rgba(177,18,38,0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = "none";
+                e.currentTarget.style.boxShadow = "0 10px 30px rgba(177,18,38,0.25)";
               }}
             >
               <Send className="h-4 w-4" />
