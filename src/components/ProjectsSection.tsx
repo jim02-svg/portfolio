@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight, X } from "lucide-react";
 import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
 import leadGenerationWorkflow from "@/assets/lead-generation-workflow.png.asset.json";
+import telegramAppointmentAssistant from "@/assets/telegram-appointment-assistant.png.asset.json";
 
 type Project = {
   title: string;
@@ -33,7 +34,16 @@ const PROJECTS: Project[] = [
     alt: "AI-Powered Local Business Lead Generation workflow diagram",
     tech: ["n8n", "Apify", "Sheets"],
   },
-  { title: "Title 3", shortDescription: "Description 3", fullDescription: "Description 3" },
+  {
+    title: "AI Telegram Appointment Assistant",
+    shortDescription:
+      "An AI-powered Telegram assistant that automates appointment scheduling, calendar management, and reminder emails using Google Vertex AI, Google Calendar, and Google Sheets.",
+    fullDescription:
+      "This workflow enables an intelligent Telegram AI assistant that communicates with users through text or voice messages. Voice messages are automatically transcribed before being processed by the AI, allowing users to interact naturally.\n\nPowered by Google Vertex AI, the assistant can answer questions, check calendar availability, create, update, and cancel appointments, and manage customer records stored in Google Sheets. Responses are formatted before being sent back to Telegram for a clean user experience.\n\nThe workflow also includes an automated reminder system that generates personalized appointment reminder emails and delivers them through Gmail, helping reduce missed appointments and improve customer engagement.\n\nCore Features\n\n💬 Telegram text and voice support\n🎙️ Automatic voice transcription\n🤖 AI-powered conversational assistant\n📅 Appointment booking, updates, and cancellations\n🗓️ Google Calendar integration\n📊 Google Sheets customer record management\n📧 Automated appointment reminder emails\n✨ Response formatting for clean, readable replies",
+    image: telegramAppointmentAssistant.url,
+    alt: "AI Telegram Appointment Assistant workflow diagram",
+    tech: ["n8n", "Telegram", "Webhook", "Gmail", "Sheets", "Calendar"],
+  },
   { title: "Title 4", shortDescription: "Description 4", fullDescription: "Description 4" },
   { title: "Title 5", shortDescription: "Description 5", fullDescription: "Description 5" },
   { title: "Title 6", shortDescription: "Description 6", fullDescription: "Description 6" },
