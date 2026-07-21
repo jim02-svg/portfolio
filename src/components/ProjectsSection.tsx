@@ -1,13 +1,22 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
 
 type Project = {
   title: string;
   description: string;
+  image?: string;
+  alt?: string;
 };
 
 const PROJECTS: Project[] = [
-  { title: "Title 1", description: "Description 1" },
+  {
+    title: "AI Voice Appointment Setter with Vapi",
+    description:
+      "An AI voice appointment setter built with Vapi that checks availability and manages bookings, updates, and cancellations automatically.",
+    image: appointmentSetterWorkflow.url,
+    alt: "AI Voice Appointment Setter workflow diagram",
+  },
   { title: "Title 2", description: "Description 2" },
   { title: "Title 3", description: "Description 3" },
   { title: "Title 4", description: "Description 4" },
