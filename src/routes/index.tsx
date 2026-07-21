@@ -422,10 +422,7 @@ function Index() {
                 className="portrait-ring-parallax absolute inset-0"
                 style={{ transform: "translate3d(0,0,0)" }}
                 onPointerDown={(e) => {
-                  const el = e.currentTarget;
-                  el.classList.add("ring-pulse-boost");
                   window.dispatchEvent(new Event("portrait-ember-burst"));
-                  window.setTimeout(() => el.classList.remove("ring-pulse-boost"), 1000);
                 }}
               >
                 <div className="portrait-outer-ring" />
