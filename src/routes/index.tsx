@@ -16,8 +16,10 @@ import {
 import portraitAsset from "@/assets/portrait.png.asset.json";
 import { PortraitEmbers } from "@/components/PortraitEmbers";
 import { ServicesSection } from "@/components/ServicesSection";
+import { AboutSection } from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactSection } from "@/components/ContactSection";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -606,8 +608,10 @@ function Index() {
 
 
       <ServicesSection />
+      <AboutSection />
       <ProjectsSection />
       <ContactSection isDark={isDark} />
+
 
       <div id="n8n-chat" />
     </div>
