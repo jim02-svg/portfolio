@@ -389,7 +389,7 @@ function Index() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:grid lg:grid-cols-12 gap-8 md:gap-10 items-center">
 
           {/* PORTRAIT — appears first on mobile/tablet, middle column on desktop */}
-          <div className="order-1 lg:order-2 lg:col-span-6 relative z-[25] flex justify-center items-center w-full">
+          <div className="order-1 lg:order-2 lg:col-span-5 relative z-[25] flex justify-center items-center w-full">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 overflow-visible"
@@ -453,7 +453,7 @@ function Index() {
 
           {/* LEFT TEXT COLUMN */}
           <div
-            className="order-2 lg:order-1 lg:col-span-4 z-20 animate-fade-in relative flex flex-col items-center text-center lg:items-start lg:text-left lg:self-center w-full lg:mt-[clamp(80px,14vh,160px)]"
+            className="order-2 lg:order-1 lg:col-span-5 z-20 animate-fade-in relative flex flex-col items-center text-center lg:items-start lg:text-left lg:self-center w-full lg:mt-[clamp(80px,14vh,160px)]"
           >
             <p
               className="mb-1"
