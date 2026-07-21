@@ -4,7 +4,8 @@ import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.
 
 type Project = {
   title: string;
-  description: string;
+  shortDescription: string;
+  fullDescription: string;
   image?: string;
   alt?: string;
   tech?: string[];
@@ -13,17 +14,19 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     title: "AI Voice Appointment Setter with Vapi",
-    description:
+    shortDescription:
       "An AI voice appointment setter built with Vapi that checks availability and manages bookings, updates, and cancellations automatically.",
+    fullDescription:
+      "This workflow powers an AI voice appointment setter built with Vapi and n8n, enabling users to manage appointments through natural voice conversations. The assistant can check available time slots, retrieve appointment details, create new bookings, update existing appointments, and process cancellations automatically.\n\nThe system synchronizes with Google Calendar to manage calendar events in real time and uses Google Sheets as a lightweight appointment database for tracking records. Input validation, error handling, timezone conversion, and automated responses ensure a smooth and reliable booking experience without manual intervention.\n\nCore Features\n\n📅 Get available time slots\n🔍 Check appointment information\n✅ Book new appointments\n✏️ Update existing appointments\n❌ Cancel appointments\n🔄 Google Calendar synchronization\n📊 Google Sheets record management\n🛡️ Input validation and error handling",
     image: appointmentSetterWorkflow.url,
     alt: "AI Voice Appointment Setter workflow diagram",
     tech: ["n8n", "Vapi", "Webhooks", "Calendar", "Sheets"],
   },
-  { title: "Title 2", description: "Description 2" },
-  { title: "Title 3", description: "Description 3" },
-  { title: "Title 4", description: "Description 4" },
-  { title: "Title 5", description: "Description 5" },
-  { title: "Title 6", description: "Description 6" },
+  { title: "Title 2", shortDescription: "Description 2", fullDescription: "Description 2" },
+  { title: "Title 3", shortDescription: "Description 3", fullDescription: "Description 3" },
+  { title: "Title 4", shortDescription: "Description 4", fullDescription: "Description 4" },
+  { title: "Title 5", shortDescription: "Description 5", fullDescription: "Description 5" },
+  { title: "Title 6", shortDescription: "Description 6", fullDescription: "Description 6" },
 ];
 
 export function ProjectsSection() {
@@ -166,8 +169,8 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
       <h3 className="project-card__title mt-6 font-bold text-lg md:text-xl tracking-tight normal-case text-white">
         {project.title}
       </h3>
-      <p className="project-card__desc mt-2 text-sm md:text-[0.95rem] normal-case tracking-normal leading-relaxed text-white/70">
-        {project.description}
+      <p className="project-card__desc mt-2 text-sm md:text-[0.95rem] normal-case tracking-normal leading-relaxed text-white/70 line-clamp-2">
+        {project.shortDescription}
       </p>
 
       {project.tech && project.tech.length > 0 && (
@@ -227,8 +230,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <h3 className="text-white text-2xl md:text-3xl font-bold tracking-tight normal-case">
             {project.title}
           </h3>
-          <p className="mt-3 text-white/70 text-sm md:text-base leading-relaxed normal-case">
-            {project.description}
+          <p className="mt-3 text-white/70 text-sm md:text-base leading-relaxed normal-case whitespace-pre-line">
+            {project.fullDescription}
           </p>
 
           {project.tech && project.tech.length > 0 && (
