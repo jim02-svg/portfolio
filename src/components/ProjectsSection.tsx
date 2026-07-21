@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, X } from "lucide-react";
 import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
+import leadGenerationWorkflow from "@/assets/lead-generation-workflow.png.asset.json";
 
 type Project = {
   title: string;
@@ -22,7 +23,16 @@ const PROJECTS: Project[] = [
     alt: "AI Voice Appointment Setter workflow diagram",
     tech: ["n8n", "Vapi", "Webhooks", "Calendar", "Sheets"],
   },
-  { title: "Title 2", shortDescription: "Description 2", fullDescription: "Description 2" },
+  {
+    title: "AI-Powered Local Business Lead Generation",
+    shortDescription:
+      "An automated lead generation workflow that collects businesses from Google Maps, analyzes website quality, extracts contact information, and saves qualified leads to Google Sheets.",
+    fullDescription:
+      "This workflow automates the process of finding and qualifying local business leads using Google Maps data. It begins by searching businesses based on user-defined keywords and location, then separates results into businesses with and without websites.\n\nFor businesses with websites, the workflow visits each site, evaluates its quality, extracts valuable contact information, and qualifies leads based on predefined criteria. Businesses without websites are also captured as potential prospects, making them ideal candidates for digital services. Finally, all qualified leads are organized and stored in Google Sheets for outreach and sales campaigns.\n\nCore Features\n\n 🔎 Search businesses from Google Maps\n\n 🌐 Detect website availability\n\n 📊 Analyze website quality\n\n 📧 Extract contact information\n\n ✅ Qualify leads automatically\n\n 📁 Save qualified leads to Google Sheets\n\n 🏢 Capture businesses without websites as potential prospects",
+    image: leadGenerationWorkflow.url,
+    alt: "AI-Powered Local Business Lead Generation workflow diagram",
+    tech: ["n8n", "Apify", "Sheets"],
+  },
   { title: "Title 3", shortDescription: "Description 3", fullDescription: "Description 3" },
   { title: "Title 4", shortDescription: "Description 4", fullDescription: "Description 4" },
   { title: "Title 5", shortDescription: "Description 5", fullDescription: "Description 5" },
