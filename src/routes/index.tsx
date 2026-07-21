@@ -439,9 +439,10 @@ function Index() {
               <div className="portrait-inner-frame">
                 <img
                   src={portraitAsset.url}
-                  alt="Jimrex Raagas portrait"
-                  className="relative z-[2] w-full h-full object-cover object-top animate-fade-in"
+                  alt="Jimrex Raagas Professional Portrait"
+                  className="relative z-[2] w-full h-full object-cover animate-fade-in"
                   style={{
+                    objectPosition: "center 15%",
                     filter: isDark
                       ? "saturate(0.9) drop-shadow(0 20px 30px rgba(0,0,0,0.6))"
                       : "brightness(1.05) contrast(0.98) saturate(0.9)",
