@@ -112,12 +112,12 @@ export function AboutSection() {
               {PERSONAL_INFO.map((item) => (
                 <div
                   key={item.label}
-                  className="about-info-row flex items-center gap-4 py-5 border-b last:border-b-0"
+                  className="about-info-row grid grid-cols-[auto_1fr] items-center gap-6 py-5 border-b last:border-b-0"
                 >
                   <div className="about-info-icon grid h-10 w-10 shrink-0 place-items-center rounded-xl">
                     <item.Icon className="h-5 w-5" strokeWidth={1.8} />
                   </div>
-                  <div className="flex-1 min-w-0">
+                  <div className="min-w-0 text-right">
                     <div className="about-info-label text-xs font-bold uppercase tracking-[0.2em] text-white/50 mb-1">
                       {item.label}
                     </div>
@@ -129,7 +129,7 @@ export function AboutSection() {
                     ) : item.href ? (
                       <a
                         href={item.href}
-                        className="about-info-link block text-base md:text-lg font-medium transition-all duration-300 hover:brightness-110"
+                        className="about-info-link inline-block text-base md:text-lg font-medium transition-all duration-300 hover:brightness-110"
                       >
                         {item.value}
                       </a>
