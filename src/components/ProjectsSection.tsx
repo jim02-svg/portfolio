@@ -150,22 +150,38 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
       className="project-card group relative rounded-2xl p-5 cursor-pointer text-left w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
     >
       <div className="project-card__image relative overflow-hidden rounded-xl aspect-[4/3]">
-        {project.image && (
+        {project.image ? (
           <img
             src={project.image}
             alt={project.alt ?? project.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
+            style={{ objectPosition: "center center" }}
           />
+        ) : (
+          <div className="h-full w-full bg-gradient-to-br from-red-950/40 to-black/60" />
         )}
       </div>
 
-      <h3 className="project-card__title mt-6 font-bold text-lg md:text-xl tracking-wide uppercase">
+      <h3 className="project-card__title mt-6 font-bold text-lg md:text-xl tracking-tight normal-case text-white">
         {project.title}
       </h3>
-      <p className="project-card__desc mt-2 text-sm md:text-[0.95rem] uppercase tracking-[0.15em]">
+      <p className="project-card__desc mt-2 text-sm md:text-[0.95rem] normal-case tracking-normal leading-relaxed text-white/70">
         {project.description}
       </p>
+
+      {project.tech && project.tech.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="px-3 py-1 rounded-full text-xs font-medium bg-red-950/30 text-red-300 border border-red-500/20 backdrop-blur-sm"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      )}
     </button>
   );
 }
