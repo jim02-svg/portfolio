@@ -67,7 +67,26 @@ export function ContactSection({ isDark }: Props) {
     >
       {/* Background layers */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
-        {/* Faint grid — softer, fades toward edges */}
+        {/* Layer 1: Large distributed radial glows — BEHIND the grid */}
+        <div
+          className="absolute -inset-[10%]"
+          style={{
+            background: isDark
+              ? `radial-gradient(circle 700px at 15% 25%, rgba(177,18,38,0.20), transparent 60%),
+                 radial-gradient(circle 600px at 85% 18%, rgba(177,18,38,0.17), transparent 60%),
+                 radial-gradient(circle 800px at 82% 75%, rgba(177,18,38,0.24), transparent 60%),
+                 radial-gradient(circle 650px at 18% 82%, rgba(177,18,38,0.18), transparent 60%),
+                 radial-gradient(circle 500px at 50% 8%, rgba(177,18,38,0.14), transparent 60%)`
+              : `radial-gradient(circle 700px at 15% 25%, rgba(177,18,38,0.09), transparent 60%),
+                 radial-gradient(circle 600px at 85% 18%, rgba(177,18,38,0.07), transparent 60%),
+                 radial-gradient(circle 800px at 82% 75%, rgba(177,18,38,0.11), transparent 60%),
+                 radial-gradient(circle 650px at 18% 82%, rgba(177,18,38,0.08), transparent 60%),
+                 radial-gradient(circle 500px at 50% 8%, rgba(177,18,38,0.06), transparent 60%)`,
+            filter: "blur(40px)",
+          }}
+        />
+
+        {/* Faint grid — softer, fades toward edges (sits on top of base glows) */}
         <div
           className="absolute inset-0"
           style={{
@@ -83,26 +102,22 @@ export function ContactSection({ isDark }: Props) {
           }}
         />
 
-        {/* Distributed soft crimson radial glows */}
+        {/* Layer 2: Soft atmospheric red haze — ABOVE the grid, below content */}
         <div
           className="absolute inset-0"
           style={{
             background: isDark
-              ? `radial-gradient(circle at 50% 8%, rgba(177,18,38,0.09), transparent 32%),
-                 radial-gradient(circle at 18% 30%, rgba(177,18,38,0.08), transparent 32%),
-                 radial-gradient(circle at 82% 22%, rgba(177,18,38,0.07), transparent 36%),
-                 radial-gradient(circle at 75% 70%, rgba(177,18,38,0.10), transparent 40%),
-                 radial-gradient(circle at 20% 82%, rgba(177,18,38,0.06), transparent 32%),
-                 radial-gradient(circle at 88% 92%, rgba(177,18,38,0.05), transparent 30%)`
-              : `radial-gradient(circle at 50% 8%, rgba(177,18,38,0.05), transparent 32%),
-                 radial-gradient(circle at 18% 30%, rgba(177,18,38,0.04), transparent 32%),
-                 radial-gradient(circle at 82% 22%, rgba(177,18,38,0.035), transparent 36%),
-                 radial-gradient(circle at 75% 70%, rgba(177,18,38,0.05), transparent 40%),
-                 radial-gradient(circle at 20% 82%, rgba(177,18,38,0.03), transparent 32%),
-                 radial-gradient(circle at 88% 92%, rgba(177,18,38,0.025), transparent 30%)`,
-            filter: "blur(24px)",
+              ? `radial-gradient(ellipse 90% 55% at 50% 50%, rgba(177,18,38,0.10) 0%, rgba(177,18,38,0.05) 40%, transparent 75%),
+                 radial-gradient(circle 550px at 75% 55%, rgba(177,18,38,0.12), transparent 65%),
+                 radial-gradient(circle 500px at 25% 45%, rgba(177,18,38,0.10), transparent 65%)`
+              : `radial-gradient(ellipse 90% 55% at 50% 50%, rgba(177,18,38,0.04) 0%, rgba(177,18,38,0.02) 40%, transparent 75%),
+                 radial-gradient(circle 550px at 75% 55%, rgba(177,18,38,0.05), transparent 65%),
+                 radial-gradient(circle 500px at 25% 45%, rgba(177,18,38,0.04), transparent 65%)`,
+            filter: "blur(30px)",
           }}
         />
+
+
 
         {/* Floating particles — tiny, blurred, static */}
         <div className="absolute inset-0">
