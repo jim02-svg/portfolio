@@ -3,6 +3,7 @@ import { ArrowRight, X } from "lucide-react";
 import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
 import facebookMessengerSupportAgent from "@/assets/facebook-messenger-support-agent.png.asset.json";
 import googleDriveFileOrganizer from "@/assets/google-drive-file-organizer.png.asset.json";
+import invoiceFollowUpSystem from "@/assets/invoice-follow-up-system.png.asset.json";
 import leadGenerationWorkflow from "@/assets/lead-generation-workflow.png.asset.json";
 import telegramAppointmentAssistant from "@/assets/telegram-appointment-assistant.png.asset.json";
 
@@ -24,7 +25,7 @@ const PROJECTS: Project[] = [
       "This workflow powers an AI voice appointment setter built with Vapi and n8n, enabling users to manage appointments through natural voice conversations. The assistant can check available time slots, retrieve appointment details, create new bookings, update existing appointments, and process cancellations automatically.\n\nThe system synchronizes with Google Calendar to manage calendar events in real time and uses Google Sheets as a lightweight appointment database for tracking records. Input validation, error handling, timezone conversion, and automated responses ensure a smooth and reliable booking experience without manual intervention.\n\nCore Features\n\n📅 Get available time slots\n🔍 Check appointment information\n✅ Book new appointments\n✏️ Update existing appointments\n❌ Cancel appointments\n🔄 Google Calendar synchronization\n📊 Google Sheets record management\n🛡️ Input validation and error handling",
     image: appointmentSetterWorkflow.url,
     alt: "AI Voice Appointment Setter workflow diagram",
-    tech: ["n8n", "Vapi", "Webhooks", "Calendar", "Sheets"],
+    tech: ["n8n", "Vapi", "Webhooks", "Calendar", "Sheets", "JavaScript"],
   },
   {
     title: "AI-Powered Local Business Lead Generation",
@@ -34,7 +35,7 @@ const PROJECTS: Project[] = [
       "This workflow automates the process of finding and qualifying local business leads using Google Maps data. It begins by searching businesses based on user-defined keywords and location, then separates results into businesses with and without websites.\n\nFor businesses with websites, the workflow visits each site, evaluates its quality, extracts valuable contact information, and qualifies leads based on predefined criteria. Businesses without websites are also captured as potential prospects, making them ideal candidates for digital services. Finally, all qualified leads are organized and stored in Google Sheets for outreach and sales campaigns.\n\nCore Features\n\n 🔎 Search businesses from Google Maps\n\n 🌐 Detect website availability\n\n 📊 Analyze website quality\n\n 📧 Extract contact information\n\n ✅ Qualify leads automatically\n\n 📁 Save qualified leads to Google Sheets\n\n 🏢 Capture businesses without websites as potential prospects",
     image: leadGenerationWorkflow.url,
     alt: "AI-Powered Local Business Lead Generation workflow diagram",
-    tech: ["n8n", "Apify", "Sheets"],
+    tech: ["n8n", "Apify", "Sheets", "JavaScript"],
   },
   {
     title: "AI Telegram Appointment Assistant",
@@ -44,7 +45,7 @@ const PROJECTS: Project[] = [
       "This workflow enables an intelligent Telegram AI assistant that communicates with users through text or voice messages. Voice messages are automatically transcribed before being processed by the AI, allowing users to interact naturally.\n\nPowered by Google Vertex AI, the assistant can answer questions, check calendar availability, create, update, and cancel appointments, and manage customer records stored in Google Sheets. Responses are formatted before being sent back to Telegram for a clean user experience.\n\nThe workflow also includes an automated reminder system that generates personalized appointment reminder emails and delivers them through Gmail, helping reduce missed appointments and improve customer engagement.\n\nCore Features\n\n💬 Telegram text and voice support\n🎙️ Automatic voice transcription\n🤖 AI-powered conversational assistant\n📅 Appointment booking, updates, and cancellations\n🗓️ Google Calendar integration\n📊 Google Sheets customer record management\n📧 Automated appointment reminder emails\n✨ Response formatting for clean, readable replies",
     image: telegramAppointmentAssistant.url,
     alt: "AI Telegram Appointment Assistant workflow diagram",
-    tech: ["n8n", "Telegram", "Webhook", "Gmail", "Sheets", "Calendar", "AI Agent"],
+    tech: ["n8n", "Telegram", "Webhook", "Gmail", "Sheets", "Calendar", "AI Agent", "JavaScript"],
   },
   {
     title: "AI-Powered Google Drive File Organizer",
@@ -66,7 +67,16 @@ const PROJECTS: Project[] = [
     alt: "AI Facebook Messenger Customer Support Agent workflow diagram",
     tech: ["n8n", "Facebook", "Docs", "Webhook"],
   },
-  { title: "Title 6", shortDescription: "Description 6", fullDescription: "Description 6" },
+  {
+    title: "Invoice Follow-Up System",
+    shortDescription:
+      "An automated workflow that monitors overdue invoices, sends scheduled payment reminders, escalates long-overdue accounts, and logs all actions in Google Sheets.",
+    fullDescription:
+      "This workflow automates the invoice follow-up process by checking outstanding invoices on a daily schedule. Every morning, it reads invoice records from Google Sheets, identifies overdue payments, and calculates the number of days each invoice has been overdue.\n\nBased on configurable overdue thresholds, the workflow routes each invoice into the appropriate reminder stage. Customers receive a first or second payment reminder via Gmail, while invoices that remain unpaid for an extended period are automatically escalated. During escalation, an additional notification is sent to the assigned freelancer or account manager to prompt further action.\n\nEvery reminder and escalation is recorded in Google Sheets, providing a complete audit trail of payment communications and ensuring consistent, automated accounts receivable management.\n\nCore Features\n\n⏰ Daily automated invoice monitoring\n📄 Reads invoice data from Google Sheets\n📅 Calculates overdue days automatically\n📧 Sends first and second payment reminders\n🚨 Escalates long-overdue invoices\n👤 Notifies assigned freelancer or account manager\n📊 Logs all reminders and escalation status in Google Sheets",
+    image: invoiceFollowUpSystem.url,
+    alt: "Invoice Follow-Up System workflow diagram",
+    tech: ["n8n", "Sheets", "Gmail", "JavaScript"],
+  },
 ];
 
 export function ProjectsSection() {
