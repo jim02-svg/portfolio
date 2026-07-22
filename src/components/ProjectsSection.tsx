@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, X } from "lucide-react";
 import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
+import googleDriveFileOrganizer from "@/assets/google-drive-file-organizer.png.asset.json";
 import leadGenerationWorkflow from "@/assets/lead-generation-workflow.png.asset.json";
 import telegramAppointmentAssistant from "@/assets/telegram-appointment-assistant.png.asset.json";
 
@@ -42,9 +43,18 @@ const PROJECTS: Project[] = [
       "This workflow enables an intelligent Telegram AI assistant that communicates with users through text or voice messages. Voice messages are automatically transcribed before being processed by the AI, allowing users to interact naturally.\n\nPowered by Google Vertex AI, the assistant can answer questions, check calendar availability, create, update, and cancel appointments, and manage customer records stored in Google Sheets. Responses are formatted before being sent back to Telegram for a clean user experience.\n\nThe workflow also includes an automated reminder system that generates personalized appointment reminder emails and delivers them through Gmail, helping reduce missed appointments and improve customer engagement.\n\nCore Features\n\n💬 Telegram text and voice support\n🎙️ Automatic voice transcription\n🤖 AI-powered conversational assistant\n📅 Appointment booking, updates, and cancellations\n🗓️ Google Calendar integration\n📊 Google Sheets customer record management\n📧 Automated appointment reminder emails\n✨ Response formatting for clean, readable replies",
     image: telegramAppointmentAssistant.url,
     alt: "AI Telegram Appointment Assistant workflow diagram",
-    tech: ["n8n", "Telegram", "Webhook", "Gmail", "Sheets", "Calendar"],
+    tech: ["n8n", "Telegram", "Webhook", "Gmail", "Sheets", "Calendar", "AI Agent"],
   },
-  { title: "Title 4", shortDescription: "Description 4", fullDescription: "Description 4" },
+  {
+    title: "AI-Powered Google Drive File Organizer",
+    shortDescription:
+      "An AI-driven workflow that automatically analyzes uploaded files, determines the appropriate destination, and organizes them into the correct Google Drive folders.",
+    fullDescription:
+      "This workflow automates document organization in Google Drive using AI-powered content analysis. Whenever a new file is uploaded, the workflow downloads and analyzes the document to understand its contents. An AI agent then determines the most appropriate folder based on the document's context and classification.\n\nIf the target folder already exists, the file is moved directly into it. If no matching folder is found, the workflow automatically creates a new folder before moving the file. This ensures documents remain organized without requiring manual sorting, making it ideal for managing large volumes of files efficiently.\n\nCore Features\n\n📂 Automatically detects new Google Drive uploads\n🤖 AI-powered document analysis and classification\n🗂️ Identifies the correct destination folder\n➕ Creates folders automatically when needed\n📁 Moves files to the appropriate location\n⚡ Eliminates manual file organization",
+    image: googleDriveFileOrganizer.url,
+    alt: "AI-Powered Google Drive File Organizer workflow diagram",
+    tech: ["n8n", "Drive", "AI Agent"],
+  },
   { title: "Title 5", shortDescription: "Description 5", fullDescription: "Description 5" },
   { title: "Title 6", shortDescription: "Description 6", fullDescription: "Description 6" },
 ];
