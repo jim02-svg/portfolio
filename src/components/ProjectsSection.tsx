@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, X } from "lucide-react";
 import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
+import facebookMessengerSupportAgent from "@/assets/facebook-messenger-support-agent.png.asset.json";
 import googleDriveFileOrganizer from "@/assets/google-drive-file-organizer.png.asset.json";
 import leadGenerationWorkflow from "@/assets/lead-generation-workflow.png.asset.json";
 import telegramAppointmentAssistant from "@/assets/telegram-appointment-assistant.png.asset.json";
