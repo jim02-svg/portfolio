@@ -56,7 +56,16 @@ const PROJECTS: Project[] = [
     alt: "AI-Powered Google Drive File Organizer workflow diagram",
     tech: ["n8n", "Drive", "AI Agent"],
   },
-  { title: "Title 5", shortDescription: "Description 5", fullDescription: "Description 5" },
+  {
+    title: "AI Facebook Messenger Customer Support Agent",
+    shortDescription:
+      "An AI-powered Facebook Messenger chatbot that automatically responds to customer inquiries using a knowledge base and conversational AI.",
+    fullDescription:
+      "This workflow automates customer support for a Facebook Page by responding to incoming Messenger conversations with an AI-powered assistant. When a user sends a message, the Facebook webhook triggers the workflow. A verification step validates the webhook request to ensure only authorized Facebook events are processed.\n\nIncoming events are then filtered so only valid customer messages continue through the workflow. The chatbot retrieves relevant information from a Google Docs knowledge base, which provides context for the AI agent to generate accurate and helpful responses. The AI also maintains conversation history to deliver more natural, context-aware interactions throughout the chat.\n\nFinally, the generated response is sent back to the customer through Facebook Messenger, enabling businesses to provide instant, automated support without manual intervention.\n\nCore Features\n\n💬 Automatically responds to Facebook Messenger inquiries\n🔐 Webhook verification for secure Facebook integration\n📨 Filters incoming events to process only valid user messages\n📚 Uses Google Docs as a dynamic knowledge base\n🤖 AI-powered, context-aware conversations\n🧠 Maintains conversation history for better responses\n⚡ Instantly replies to customers through Facebook Messenger",
+    image: facebookMessengerSupportAgent.url,
+    alt: "AI Facebook Messenger Customer Support Agent workflow diagram",
+    tech: ["n8n", "Facebook", "Docs", "Webhook"],
+  },
   { title: "Title 6", shortDescription: "Description 6", fullDescription: "Description 6" },
 ];
 
