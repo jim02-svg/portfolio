@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Jimrex Raagas — AI Automation Portfolio" },
+      { title: "Jimrex Raagas" },
       {
         name: "description",
         content:
           "Jimrex Raagas designs and builds AI automation systems with n8n and API integrations to scale businesses faster.",
       },
       { name: "author", content: "Jimrex Raagas" },
-      { property: "og:title", content: "Jimrex Raagas — AI Automation Portfolio" },
+      { property: "og:title", content: "Jimrex Raagas" },
       {
         property: "og:description",
         content:
