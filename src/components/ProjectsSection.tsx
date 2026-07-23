@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, X } from "lucide-react";
-import appointmentSetterWorkflow from "@/assets/appointment-setter-workflow.png.asset.json";
-import facebookMessengerSupportAgent from "@/assets/facebook-messenger-support-agent.png.asset.json";
-import googleDriveFileOrganizer from "@/assets/google-drive-file-organizer.png.asset.json";
-import invoiceFollowUpSystem from "@/assets/invoice-follow-up-system.png.asset.json";
-import leadGenerationWorkflow from "@/assets/lead-generation-workflow.png.asset.json";
-import telegramAppointmentAssistant from "@/assets/telegram-appointment-assistant.png.asset.json";
+const appointmentSetterWorkflow = { url: "/appointment-setter-workflow.png" };
+const facebookMessengerSupportAgent = { url: "/facebook-messenger-support-agent.png" };
+const googleDriveFileOrganizer = { url: "/google-drive-file-organizer.png" };
+const invoiceFollowUpSystem = { url: "/invoice-follow-up-system.png" };
+const leadGenerationWorkflow = { url: "/lead-generation-workflow.png" };
+const telegramAppointmentAssistant = { url: "/telegram-appointment-assistant.png" };
 
 type Project = {
   title: string;
