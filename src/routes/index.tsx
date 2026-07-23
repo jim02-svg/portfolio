@@ -13,6 +13,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import portraitAsset from "@/assets/portrait.png.asset.json";
 import { PortraitEmbers } from "@/components/PortraitEmbers";
 import { ServicesSection } from "@/components/ServicesSection";
 import { AboutSection } from "@/components/AboutSection";
@@ -437,7 +438,7 @@ function Index() {
               </div>
               <div className="portrait-inner-frame">
                 <img
-                  src="/portrait.png"
+                  src={portraitAsset.url}
                   alt="Jimrex Raagas Professional Portrait"
                   className="relative z-[2] w-full h-full object-cover animate-fade-in"
                   style={{
