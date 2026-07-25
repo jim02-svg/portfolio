@@ -1,11 +1,5 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, X } from "lucide-react";
-const appointmentSetterWorkflow = { url: "/appointment-setter-workflow.png" };
-const facebookMessengerSupportAgent = { url: "/facebook-messenger-support-agent.png" };
-const googleDriveFileOrganizer = { url: "/google-drive-file-organizer.png" };
-const invoiceFollowUpSystem = { url: "/invoice-follow-up-system.png" };
-const leadGenerationWorkflow = { url: "/lead-generation-workflow.png" };
-const telegramAppointmentAssistant = { url: "/telegram-appointment-assistant.png" };
 
 type Project = {
   title: string;
@@ -23,7 +17,7 @@ const PROJECTS: Project[] = [
       "An AI voice appointment setter built with Vapi that checks availability and manages bookings, updates, and cancellations automatically.",
     fullDescription:
       "This workflow powers an AI voice appointment setter built with Vapi and n8n, enabling users to manage appointments through natural voice conversations. The assistant can check available time slots, retrieve appointment details, create new bookings, update existing appointments, and process cancellations automatically.\n\nThe system synchronizes with Google Calendar to manage calendar events in real time and uses Google Sheets as a lightweight appointment database for tracking records. Input validation, error handling, timezone conversion, and automated responses ensure a smooth and reliable booking experience without manual intervention.\n\nCore Features\n\n📅 Get available time slots\n🔍 Check appointment information\n✅ Book new appointments\n✏️ Update existing appointments\n❌ Cancel appointments\n🔄 Google Calendar synchronization\n📊 Google Sheets record management\n🛡️ Input validation and error handling",
-    image: appointmentSetterWorkflow.url,
+    image: "/appointment-setter-workflow.png",
     alt: "AI Voice Appointment Setter workflow diagram",
     tech: ["n8n", "Vapi", "Webhooks", "Calendar", "Sheets", "JavaScript"],
   },
@@ -33,7 +27,7 @@ const PROJECTS: Project[] = [
       "An automated lead generation workflow that collects businesses from Google Maps, analyzes website quality, extracts contact information, and saves qualified leads to Google Sheets.",
     fullDescription:
       "This workflow automates the process of finding and qualifying local business leads using Google Maps data. It begins by searching businesses based on user-defined keywords and location, then separates results into businesses with and without websites.\n\nFor businesses with websites, the workflow visits each site, evaluates its quality, extracts valuable contact information, and qualifies leads based on predefined criteria. Businesses without websites are also captured as potential prospects, making them ideal candidates for digital services. Finally, all qualified leads are organized and stored in Google Sheets for outreach and sales campaigns.\n\nCore Features\n\n 🔎 Search businesses from Google Maps\n\n 🌐 Detect website availability\n\n 📊 Analyze website quality\n\n 📧 Extract contact information\n\n ✅ Qualify leads automatically\n\n 📁 Save qualified leads to Google Sheets\n\n 🏢 Capture businesses without websites as potential prospects",
-    image: leadGenerationWorkflow.url,
+    image: "/lead-generation-workflow.png",
     alt: "AI-Powered Local Business Lead Generation workflow diagram",
     tech: ["n8n", "Apify", "Sheets", "JavaScript"],
   },
@@ -43,7 +37,7 @@ const PROJECTS: Project[] = [
       "An AI-powered Telegram assistant that automates appointment scheduling, calendar management, and reminder emails using Google Vertex AI, Google Calendar, and Google Sheets.",
     fullDescription:
       "This workflow enables an intelligent Telegram AI assistant that communicates with users through text or voice messages. Voice messages are automatically transcribed before being processed by the AI, allowing users to interact naturally.\n\nPowered by Google Vertex AI, the assistant can answer questions, check calendar availability, create, update, and cancel appointments, and manage customer records stored in Google Sheets. Responses are formatted before being sent back to Telegram for a clean user experience.\n\nThe workflow also includes an automated reminder system that generates personalized appointment reminder emails and delivers them through Gmail, helping reduce missed appointments and improve customer engagement.\n\nCore Features\n\n💬 Telegram text and voice support\n🎙️ Automatic voice transcription\n🤖 AI-powered conversational assistant\n📅 Appointment booking, updates, and cancellations\n🗓️ Google Calendar integration\n📊 Google Sheets customer record management\n📧 Automated appointment reminder emails\n✨ Response formatting for clean, readable replies",
-    image: telegramAppointmentAssistant.url,
+    image: "/telegram-appointment-assistant.png",
     alt: "AI Telegram Appointment Assistant workflow diagram",
     tech: ["n8n", "Telegram", "Webhook", "Gmail", "Sheets", "Calendar", "AI Agent", "JavaScript"],
   },
@@ -53,7 +47,7 @@ const PROJECTS: Project[] = [
       "An AI-driven workflow that automatically analyzes uploaded files, determines the appropriate destination, and organizes them into the correct Google Drive folders.",
     fullDescription:
       "This workflow automates document organization in Google Drive using AI-powered content analysis. Whenever a new file is uploaded, the workflow downloads and analyzes the document to understand its contents. An AI agent then determines the most appropriate folder based on the document's context and classification.\n\nIf the target folder already exists, the file is moved directly into it. If no matching folder is found, the workflow automatically creates a new folder before moving the file. This ensures documents remain organized without requiring manual sorting, making it ideal for managing large volumes of files efficiently.\n\nCore Features\n\n📂 Automatically detects new Google Drive uploads\n🤖 AI-powered document analysis and classification\n🗂️ Identifies the correct destination folder\n➕ Creates folders automatically when needed\n📁 Moves files to the appropriate location\n⚡ Eliminates manual file organization",
-    image: googleDriveFileOrganizer.url,
+    image: "/google-drive-file-organizer.png",
     alt: "AI-Powered Google Drive File Organizer workflow diagram",
     tech: ["n8n", "Drive", "AI Agent"],
   },
@@ -63,7 +57,7 @@ const PROJECTS: Project[] = [
       "An AI-powered Facebook Messenger chatbot that automatically responds to customer inquiries using a knowledge base and conversational AI.",
     fullDescription:
       "This workflow automates customer support for a Facebook Page by responding to incoming Messenger conversations with an AI-powered assistant. When a user sends a message, the Facebook webhook triggers the workflow. A verification step validates the webhook request to ensure only authorized Facebook events are processed.\n\nIncoming events are then filtered so only valid customer messages continue through the workflow. The chatbot retrieves relevant information from a Google Docs knowledge base, which provides context for the AI agent to generate accurate and helpful responses. The AI also maintains conversation history to deliver more natural, context-aware interactions throughout the chat.\n\nFinally, the generated response is sent back to the customer through Facebook Messenger, enabling businesses to provide instant, automated support without manual intervention.\n\nCore Features\n\n💬 Automatically responds to Facebook Messenger inquiries\n🔐 Webhook verification for secure Facebook integration\n📨 Filters incoming events to process only valid user messages\n📚 Uses Google Docs as a dynamic knowledge base\n🤖 AI-powered, context-aware conversations\n🧠 Maintains conversation history for better responses\n⚡ Instantly replies to customers through Facebook Messenger",
-    image: facebookMessengerSupportAgent.url,
+    image: "/facebook-messenger-support-agent.png",
     alt: "AI Facebook Messenger Customer Support Agent workflow diagram",
     tech: ["n8n", "Facebook", "Docs", "Webhook"],
   },
@@ -73,7 +67,7 @@ const PROJECTS: Project[] = [
       "An automated workflow that monitors overdue invoices, sends scheduled payment reminders, escalates long-overdue accounts, and logs all actions in Google Sheets.",
     fullDescription:
       "This workflow automates the invoice follow-up process by checking outstanding invoices on a daily schedule. Every morning, it reads invoice records from Google Sheets, identifies overdue payments, and calculates the number of days each invoice has been overdue.\n\nBased on configurable overdue thresholds, the workflow routes each invoice into the appropriate reminder stage. Customers receive a first or second payment reminder via Gmail, while invoices that remain unpaid for an extended period are automatically escalated. During escalation, an additional notification is sent to the assigned freelancer or account manager to prompt further action.\n\nEvery reminder and escalation is recorded in Google Sheets, providing a complete audit trail of payment communications and ensuring consistent, automated accounts receivable management.\n\nCore Features\n\n⏰ Daily automated invoice monitoring\n📄 Reads invoice data from Google Sheets\n📅 Calculates overdue days automatically\n📧 Sends first and second payment reminders\n🚨 Escalates long-overdue invoices\n👤 Notifies assigned freelancer or account manager\n📊 Logs all reminders and escalation status in Google Sheets",
-    image: invoiceFollowUpSystem.url,
+    image: "/invoice-follow-up-system.png",
     alt: "Invoice Follow-Up System workflow diagram",
     tech: ["n8n", "Sheets", "Gmail", "JavaScript"],
   },
