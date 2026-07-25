@@ -13,7 +13,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import portraitAsset from "@/assets/portrait.png.asset.json";
+
 import { PortraitEmbers } from "@/components/PortraitEmbers";
 import { ServicesSection } from "@/components/ServicesSection";
 import { AboutSection } from "@/components/AboutSection";
