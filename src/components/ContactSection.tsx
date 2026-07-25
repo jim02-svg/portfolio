@@ -312,108 +312,69 @@ export function ContactSection({ isDark }: Props) {
                 : "0 20px 60px rgba(0,0,0,0.08)",
             }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="flex flex-col h-full gap-6">
               <div>
                 <label
                   className="block text-[11px] uppercase font-semibold tracking-[0.25em] mb-2"
                   style={{ color: mutedText }}
                 >
-                  Name <span style={{ color: CRIMSON }}>*</span>
+                  Subject
                 </label>
                 <input
-                  required
                   type="text"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  onFocus={() => setFocused("name")}
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  onFocus={() => setFocused("subject")}
                   onBlur={() => setFocused(null)}
-                  placeholder="Enter your full name"
+                  placeholder="AI Automation Inquiry"
                   className={inputBase}
-                  style={inputStyle("name")}
+                  style={inputStyle("subject")}
                 />
               </div>
-              <div>
+
+              <div className="flex-1 flex flex-col">
                 <label
                   className="block text-[11px] uppercase font-semibold tracking-[0.25em] mb-2"
                   style={{ color: mutedText }}
                 >
-                  Email <span style={{ color: CRIMSON }}>*</span>
+                  Message <span style={{ color: CRIMSON }}>*</span>
                 </label>
-                <input
+                <textarea
                   required
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  onFocus={() => setFocused("email")}
+                  rows={8}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  onFocus={() => setFocused("message")}
                   onBlur={() => setFocused(null)}
-                  placeholder="your@email.com"
-                  className={inputBase}
-                  style={inputStyle("email")}
+                  placeholder="Tell me about your business, the tasks you'd like to automate, or the systems you'd like to integrate."
+                  className={`${inputBase} resize-none flex-1 min-h-[180px]`}
+                  style={inputStyle("message")}
                 />
               </div>
-            </div>
 
-            <div className="mt-5">
-              <label
-                className="block text-[11px] uppercase font-semibold tracking-[0.25em] mb-2"
-                style={{ color: mutedText }}
+              <button
+                type="submit"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 min-h-[52px]"
+                style={{
+                  background: `linear-gradient(90deg, ${CRIMSON_DARK} 0%, ${CRIMSON} 100%)`,
+                  padding: "0.9rem 1.25rem",
+                  fontSize: "0.95rem",
+                  letterSpacing: "0.3px",
+                  boxShadow: "0 10px 30px rgba(177,18,38,0.25)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.filter = "brightness(1.08)";
+                  e.currentTarget.style.boxShadow = "0 14px 40px rgba(177,18,38,0.35)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.filter = "none";
+                  e.currentTarget.style.boxShadow = "0 10px 30px rgba(177,18,38,0.25)";
+                }}
               >
-                Subject
-              </label>
-              <input
-                type="text"
-                value={form.subject}
-                onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                onFocus={() => setFocused("subject")}
-                onBlur={() => setFocused(null)}
-                placeholder="AI Automation Inquiry"
-                className={inputBase}
-                style={inputStyle("subject")}
-              />
+                <Send className="h-4 w-4" />
+                Send Message
+              </button>
             </div>
-
-            <div className="mt-5">
-              <label
-                className="block text-[11px] uppercase font-semibold tracking-[0.25em] mb-2"
-                style={{ color: mutedText }}
-              >
-                Message <span style={{ color: CRIMSON }}>*</span>
-              </label>
-              <textarea
-                required
-                rows={6}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                onFocus={() => setFocused("message")}
-                onBlur={() => setFocused(null)}
-                placeholder="Tell me about your business, the tasks you'd like to automate, or the systems you'd like to integrate."
-                className={`${inputBase} resize-y min-h-[140px]`}
-                style={inputStyle("message")}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="mt-7 w-full inline-flex items-center justify-center gap-2 rounded-xl font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 min-h-[52px]"
-              style={{
-                background: `linear-gradient(90deg, ${CRIMSON_DARK} 0%, ${CRIMSON} 100%)`,
-                padding: "0.9rem 1.25rem",
-                fontSize: "0.95rem",
-                letterSpacing: "0.3px",
-                boxShadow: "0 10px 30px rgba(177,18,38,0.25)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.filter = "brightness(1.08)";
-                e.currentTarget.style.boxShadow = "0 14px 40px rgba(177,18,38,0.35)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.filter = "none";
-                e.currentTarget.style.boxShadow = "0 10px 30px rgba(177,18,38,0.25)";
-              }}
-            >
-              <Send className="h-4 w-4" />
-              Send Message
-            </button>
           </form>
         </div>
       </div>
