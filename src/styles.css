@@ -440,6 +440,11 @@ section[id] {
   inset: 5% 7%;
   border-radius: 48% 52% 60% 40% / 45% 45% 55% 55%;
   overflow: hidden;
+  -webkit-mask-image: radial-gradient(white, black);
+  clip-path: inset(0 round 48% 52% 60% 40% / 45% 45% 55% 55%);
+  isolation: isolate;
+  transform: translateZ(0);
+  will-change: transform;
   background:
     radial-gradient(ellipse at 50% 40%, #500508 0%, #2a0304 55%, #100102 100%);
   border: 1.5px solid rgba(157, 19, 24, 0.85);
