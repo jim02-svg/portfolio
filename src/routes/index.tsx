@@ -423,7 +423,7 @@ function Index() {
             </div>
 
             <div
-              className="relative mx-auto w-[72vw] max-w-[300px] aspect-[3/4] sm:w-[55vw] sm:max-w-[360px] md:w-[46vw] md:max-w-[420px] lg:aspect-auto lg:w-full lg:max-w-[min(540px,41vw)] lg:h-[clamp(340px,68vh,610px)]"
+              className="relative mx-auto w-[72vw] max-w-[300px] aspect-[3/4] sm:w-[55vw] sm:max-w-[360px] md:w-[46vw] md:max-w-[420px] lg:aspect-auto lg:w-full lg:max-w-[min(540px,41vw)] lg:h-[clamp(340px,68vh,610px)] [isolation:isolate]"
             >
               <div
                 aria-hidden
