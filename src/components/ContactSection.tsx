@@ -20,15 +20,13 @@ const CRIMSON = "#B11226";
 const CRIMSON_DARK = "#7A0F18";
 
 export function ContactSection({ isDark }: Props) {
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [form, setForm] = useState({ subject: "", message: "" });
   const [focused, setFocused] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(form.subject || "AI Automation Inquiry");
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`,
-    );
+    const body = encodeURIComponent(form.message);
     window.location.href = `mailto:jimrexraagas01@gmail.com?subject=${subject}&body=${body}`;
   };
 
