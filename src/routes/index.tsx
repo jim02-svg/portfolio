@@ -424,13 +424,13 @@ function Index() {
             </div>
 
             <div
-              className="relative mx-auto w-[72vw] max-w-[300px] aspect-[3/4] sm:w-[55vw] sm:max-w-[360px] md:w-[46vw] md:max-w-[420px] lg:aspect-auto lg:w-full lg:max-w-[min(540px,41vw)] lg:h-[clamp(340px,68vh,610px)]"
+              className="relative mx-auto w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] md:w-[420px] md:h-[420px] lg:w-[480px] lg:h-[480px] rounded-full overflow-hidden flex items-center justify-center"
             >
               <div
                 aria-hidden
                 className="portrait-ring-parallax absolute inset-0"
                 style={{ transform: "translate3d(0,0,0)" }}
-                onPointerDown={(e) => {
+                onPointerDown={() => {
                   window.dispatchEvent(new Event("portrait-ember-burst"));
                 }}
               >
@@ -438,11 +438,10 @@ function Index() {
               </div>
               <div className="portrait-inner-frame">
                 <img
-                  src={portraitAsset.url}
+                  src="/portrait.png"
                   alt="Jimrex Raagas Professional Portrait"
-                  className="relative z-[2] w-full h-full object-cover animate-fade-in"
+                  className="relative z-[2] w-full h-full object-cover object-[center_15%] animate-fade-in"
                   style={{
-                    objectPosition: "center 15%",
                     filter: isDark
                       ? "saturate(0.9) drop-shadow(0 20px 30px rgba(0,0,0,0.6))"
                       : "brightness(1.05) contrast(0.98) saturate(0.9)",
@@ -450,6 +449,7 @@ function Index() {
                 />
               </div>
             </div>
+
           </div>
 
           {/* LEFT TEXT COLUMN */}
