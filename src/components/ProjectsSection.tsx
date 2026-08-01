@@ -71,6 +71,16 @@ const PROJECTS: Project[] = [
     alt: "Invoice Follow-Up System workflow diagram",
     tech: ["n8n", "Sheets", "Gmail", "JavaScript"],
   },
+  {
+    title: "RAG AI Knowledge Base Assistant",
+    shortDescription:
+      "A Retrieval-Augmented Generation (RAG) workflow that answers user questions using a Supabase-powered knowledge base with automatic document synchronization.",
+    fullDescription:
+      "This workflow implements a Retrieval-Augmented Generation (RAG) system that enables an AI assistant to provide accurate, context-aware responses using information stored in a Supabase Vector Store.\n\nWhen a user sends a message, it is passed to the AI agent, which uses a Knowledge Base Retriever to search the Supabase vector database for the most relevant documents. The retriever relies on the Google Embeddings Model to perform semantic search, allowing the AI to retrieve context before generating a response. The AI then returns an informed answer to the user instead of relying solely on its pre-trained knowledge.\n\nThe lower workflow manages the knowledge base automatically. Whenever a document is created, updated, or deleted in Google Drive, the workflow synchronizes the Supabase Vector Store. New documents are embedded and added, updated documents replace outdated embeddings, and deleted documents are removed from the knowledge base. This ensures the AI assistant always retrieves the latest and most accurate information.\n\nCore Features\n\n🤖 AI-powered question answering\n🧠 Retrieval-Augmented Generation (RAG)\n🗄️ Supabase Vector Store as the knowledge base\n🔍 Semantic search using Google Embeddings\n📄 Automatic document indexing from Google Drive\n🔄 Synchronizes document creation, updates, and deletion\n✅ Always retrieves the latest knowledge before generating responses",
+    image: "/rag-ai-knowledge-base-assistant.png",
+    alt: "RAG AI Knowledge Base Assistant workflow diagram",
+    tech: ["n8n", "Supabase", "AI Agent", "Drive"],
+  },
 ];
 
 export function ProjectsSection() {
