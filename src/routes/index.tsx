@@ -18,6 +18,7 @@ import { ServicesSection } from "@/components/ServicesSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactSection } from "@/components/ContactSection";
+import { ChatWidget } from "@/components/ChatWidget";
 
 
 export const Route = createFileRoute("/")({
@@ -128,51 +129,6 @@ function Index() {
     else root.classList.remove("dark");
     localStorage.setItem("theme", theme);
   }, [theme, mounted]);
-
-  useEffect(() => {
-    let disposed = false;
-    (async () => {
-      // Inject n8n chat stylesheet
-      if (!document.getElementById("n8n-chat-css")) {
-        const link = document.createElement("link");
-        link.id = "n8n-chat-css";
-        link.rel = "stylesheet";
-        link.href = "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css";
-        document.head.appendChild(link);
-      }
-      if (disposed) return;
-      const { createChat } = await import("@n8n/chat");
-      createChat({
-        webhookUrl:
-          "https://n8n.automatewithjim.com/webhook/fbea4072-c708-4ed4-addb-fa34ac68456b/chat",
-        webhookConfig: { method: "POST", headers: {} },
-        target: "#n8n-chat",
-        mode: "window",
-        chatInputKey: "chatInput",
-        chatSessionKey: "sessionId",
-        loadPreviousSession: true,
-        showWelcomeScreen: false,
-        enableStreaming: true,
-        defaultLanguage: "en",
-        initialMessages: [
-          "Hi! 👋 I'm Jimrex's assistant. Looking to automate your business? I can answer your questions.",
-        ],
-        i18n: {
-          en: {
-            title: "Jimrex's Assistant",
-            subtitle: "🟢 Online",
-            footer: "",
-            getStarted: "New Conversation",
-            inputPlaceholder: "Type a message...",
-            closeButtonTooltip: "Close chat",
-          },
-        },
-      });
-    })();
-    return () => {
-      disposed = true;
-    };
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
