@@ -573,7 +573,7 @@ function Index() {
       <ContactSection isDark={isDark} />
 
 
-      <div id="n8n-chat" />
+      <ChatWidget />
     </div>
   );
 }
